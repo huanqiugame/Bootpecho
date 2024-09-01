@@ -1,0 +1,44 @@
+:root {
+    --xc-code-background-color: rgba(214, 51, 132, 0.1);
+}
+a, a:hover {
+    text-underline-offset:0.25em;
+}
+h2::after, h3::after {
+    color: gray;
+    font-weight: lighter;
+    font-size: 0.5em;
+}
+h2::after {
+    content: " h2";
+}
+h3::after {
+    content: " h3";
+}
+code {
+    background-color: var(--xc-code-background-color);
+    padding: 2px;
+    border-radius: 4px;
+}
+pre {
+    border: 1px solid gray;
+    padding: 8px;
+    flex-direction: column;
+    display: flex;
+    background-color: var(--xc-code-background-color);
+    border-radius: 0.5rem;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+}
+p {
+    word-break: break-word;
+}
+pre code {
+    background-color: unset;
+}
+
+/* Code below only works for Typecho */
+.comment-list {
+    list-style: none;
+}
