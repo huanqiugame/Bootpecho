@@ -10,8 +10,6 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div>
-<!-- <script type="text/javascript" src="<?php $this->options->themeUrl('js/wp-recentcomments.js?ver=2.2.7'); ?>"></script> -->
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/navigation.js?ver=1.0'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('js/global.js'); ?>"></script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
 <?php $this->footer(); ?>

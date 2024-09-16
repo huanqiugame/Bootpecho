@@ -38,11 +38,15 @@
                 </div>
                 </article>
         <?php endwhile; ?>
-        <!-- <nav id="nav-below" class="navigation" role="navigation">
-            <h1 class="assistive-text">文章导航</h1>
-            <?php $this->pageLink('<span class="meta-nav">←</span> 较新文章','prev'); ?>
-            <?php $this->pageLink('早期文章<span class="meta-nav">→</span>','next'); ?>
-        </nav> -->
+        <?php $this->pageNav('前一页', '后一页', 3, '...', [
+            'textTag' => 'span',
+            'prevClass' => '',
+            'nextClass' => '',
+            'itemTag' => 'li',
+            'currentClass' => 'active '
+        ]); ?>
+        <script type="text/javascript" src="<?php $this->options->themeUrl('js/pagination.js'); ?>"></script>
+        <script type="text/javascript" src="<?php $this->options->themeUrl('js/not_found.js'); ?>"></script>
     </div><!-- #content -->
 </div><!-- #primary -->
 
