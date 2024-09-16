@@ -16,9 +16,15 @@
 
 ![screenshot](screenshot.png)
 
+## 快速开始
+
+1. 点击“Code”，“Download ZIP”下载压缩包。
+2. 解压ZIP包，重命名为`rebootstrap`。
+3. 将`rebootstrap`文件夹放入您的网站目录下的`usr/themes`目录，并在Typecho后台启用。
+
 ---
 
-以下为原作者包内的README.md：
+# 以下为原作者包内的README.md：
 
 ### Typecho主题Twenty Twelve v1.2
 
