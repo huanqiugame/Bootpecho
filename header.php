@@ -29,8 +29,6 @@
 </head>
 <body class="container mt-3 mb-5">
 
-<script src="/_includes/set_color_theme.js"></script>
-
 <div id="page">
 	<header id="masthead" class="site-header" role="banner">
 		<nav class="navbar navbar-expand bg-body-tertiary mb-3">

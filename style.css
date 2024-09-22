@@ -37,6 +37,10 @@ p {
 pre code {
     background-color: unset;
 }
+/* 除了h1以外的所有元素 */
+* :not(h1) {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+}
 
 /* Code below only works for Typecho */
 .comment-list {

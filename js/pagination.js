@@ -20,6 +20,16 @@ if (pagination) {
     spanList.forEach(span => {
         span.classList.add('page-link', 'disabled');
     });
-} else {
-    console.error('未找到.page-navigator元素');
 }
+
+const articles = document.getElementById('articles');
+// 如果屏幕元素大于992px，则CSS分两栏
+function autoSplitColumn() {
+    if (window.innerWidth > 991) {
+        articles.style.columnCount = 2;
+    } else {
+        articles.style.removeProperty('column-count');
+    }
+}
+autoSplitColumn()
+window.onresize = autoSplitColumn
