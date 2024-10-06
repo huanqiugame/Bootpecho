@@ -1,6 +1,6 @@
 // 获取page-navigator类的元素
 const pagination = document.querySelector('.page-navigator');
-
+const beforePageNavHr = document.getElementById('beforePageNavHr')
 if (pagination) {
     // 将navigation的类修改为pagination
     pagination.classList.add('pagination', 'justify-content-center');
@@ -20,16 +20,19 @@ if (pagination) {
     spanList.forEach(span => {
         span.classList.add('page-link', 'disabled');
     });
+} else {
+    beforePageNavHr.remove();
 }
 
 const articles = document.getElementById('articles');
-// 如果屏幕元素大于992px，则CSS分两栏
+const articleCount = articles.children.length;
+// 如果屏幕元素大于992px且至少有三篇文章，则CSS分两栏
 function autoSplitColumn() {
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 991 && articleCount > 2) {
         articles.style.columnCount = 2;
     } else {
         articles.style.removeProperty('column-count');
     }
 }
-autoSplitColumn()
-window.onresize = autoSplitColumn
+autoSplitColumn();
+window.onresize = autoSplitColumn;

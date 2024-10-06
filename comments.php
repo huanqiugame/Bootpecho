@@ -41,7 +41,7 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>">站点<?php if ($this->options->commentsRequireURL): ?><span class="required">*</span><?php endif; ?></span>
-                <input id="url" name="url" type="text" class="form-control <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>" placeholder="Email" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?>aria-required="true"<?php endif; ?> aria-label="url">
+                <input id="url" name="url" type="text" class="form-control <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>" placeholder="example.com" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?>aria-required="true"<?php endif; ?> aria-label="url">
             </div>
         <?php endif; ?>
             <div class="input-group mb-3">
