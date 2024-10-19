@@ -23,6 +23,7 @@
 <!-- 结束使用cdnjs提供的Bootstrap CSS文件 -->
 
 <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('style.css'); ?>">
+<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
 
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>

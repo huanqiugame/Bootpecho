@@ -11,7 +11,6 @@
 	</footer><!-- #colophon -->
 </div>
 <script type="text/javascript" src="<?php $this->options->themeUrl('js/global.js'); ?>"></script>
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
 <?php $this->footer(); ?>
 
 <!-- 开始使用cdnjs提供Bootstrap JavaScript文件 -->
