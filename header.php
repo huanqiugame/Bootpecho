@@ -35,19 +35,27 @@
 		<nav class="navbar navbar-expand bg-body-tertiary mb-3">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/"><?php $this->options->title() ?></a>
-				<!-- <div class="navbar-nav me-auto">
-					<a class="nav-link" href="/index.php/about">关于</a>
-				</div> -->
+				<div class="navbar-nav me-auto">
+					<!-- <a class="nav-link" href="/about">关于</a> -->
+				</div>
 				<button class="btn ms-auto border-1 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#bs_sidebar" aria-controls="sidebar"><span class="navbar-toggler-icon"></span></button>
 			</div>
 		</nav>
 	</header><!-- #masthead -->
-    <div class="crumbs_patch">
-        <a href="<?php $this->options->siteUrl(); ?>">Home</a> &raquo;</li>
+    <div class="crumbs_patch my-2">
+        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+		<?php if (!$this->is('index')): ?> &raquo; <?php endif; ?></li>
         <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
-            文章发布
         <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
             <?php $this->category(); ?> &raquo; <?php $this->title() ?>
+		<?php elseif ($this->is('author')): ?>
+			Author &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
+		<?php elseif ($this->is('category')): ?>
+			Category &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
+		<?php elseif ($this->is('tag')): ?>
+			Tag &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
+		<?php elseif ($this->is('date')): ?>
+			<?php $this->date('Y'); ?> &raquo; <?php $this->date('m'); ?>
         <?php else: ?><!-- 页面为其他页时 -->
             <?php $this->archiveTitle(' &raquo; ','',''); ?>
         <?php endif; ?>

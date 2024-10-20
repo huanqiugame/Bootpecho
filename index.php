@@ -14,24 +14,51 @@
  
  $this->need('header.php');
 ?>
+
 <div id="primary">
     <div id="content" role="main">
         <hgroup>
-			<h1>
+        <h1>
 				<?php if ($this->options->logoUrl): ?>
 				<img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
 				<?php endif; ?>
-				<?php $this->options->title() ?>
+                <?php if ($this->is('category')): ?>
+                “<?php $this->archiveTitle("", "", ""); ?>”分类
+                <?php elseif ($this->is('tag')): ?>
+                “<?php $this->archiveTitle("", "", ""); ?>”标签
+                <?php elseif ($this->is('author')): ?>
+                “<?php $this->archiveTitle("", "", ""); ?>”的作品
+                <?php elseif ($this->is('date')): ?>
+                <?php $this->archiveTitle("", "", "");?>
+                <?php elseif ($this->is('search')): ?>
+                “<?php $this->archiveTitle("", "", ""); ?>”的搜索结果
+                <?php else: ?>
+                <?php $this->options->title() ?>
+                <?php endif; ?>
             </h1>
-			<p class="site-description"><?php $this->options->description() ?></p>
+            <?php if ($this->is('author') || $this->is('search') || $this->is('tag')): ?>
+            <?php else: ?>
+            <p class="site-description"><?php echo $this->getDescription(); ?></p>
+            <?php endif; ?>
 		</hgroup>
-        <hr class="mb-0" />
+        <!-- 如果搜索结果不存在时，显示搜索框。 -->
+        <?php if (!$this->have()): ?>
+            <hr />
+            <p>你可以尝试使用其他关键词再次搜索。</p>
+            <form class="input-group mb-3" role="search" id="searchform" method="post" action="<?php $this->options->siteUrl(); ?>">
+                <input type="text" class="form-control text" placeholder="搜索标题、内容、时间、作者及更多" aria-label="Search" name="s" id="s" value="<?php $this->archiveTitle("", "", ""); ?>">
+                <input class="btn btn-primary" type="submit" id="searchsubmit" value="搜索">
+            </form>
+        <?php else: ?>
+            <hr class="mb-0" />
+        <?php endif; ?>
+
         <div id="articles" style="column-count: 1;">
             <?php while($this->next()): ?>
                     <article class="card mt-3 mb-3">
                         <div class="card-header">
                             <div style="display: inline-flex; float: left;">
-                                <span>作者：<span><a href="<?php $this->author->permalink(); ?>" title="查看所有由 <?php $this->author(); ?> 发布的文章" rel="author"><?php $this->author(); ?></a></span></span>，属于<a href="#" title="查看 中的全部文章" rel="category"><?php $this->category(',') ?></a>分类。
+                                <span>作者：<span><a href="<?php $this->author->permalink(); ?>" title="查看所有由 <?php $this->author(); ?> 发布的文章" rel="author"><?php $this->author(); ?></a></span></span>，属于<?php $this->category('、') ?>分类。
                             </div>
                             <div style="display: inline-flex; float: right;">
                                 <?php Postviews($this); ?>
