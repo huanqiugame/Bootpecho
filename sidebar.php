@@ -50,25 +50,33 @@
                     </ul>
                 </aside>
             <?php endif; ?>
-            <!-- <?php if (empty($this->options->sidebarBlock) || in_array('ShowCategory', $this->options->sidebarBlock)): ?>
+            <?php if (empty($this->options->sidebarBlock) || in_array('ShowCategory', $this->options->sidebarBlock)): ?>
                 <aside class="widget widget_categories">
                     <h4 class="widget-title"><?php _e('分类目录'); ?></h4>		
                     <ul>
                     <?php $this->widget('Widget_Metas_Category_List')->parse('<li class="cat-item"><a href="{permalink}" title=" 查看 {name} 下的所有文章">{name}</a> ({count})</li>'); ?>
                     </ul>
                 </aside>
-            <?php endif; ?> -->
+            <?php endif; ?>
             <?php if (empty($this->options->sidebarBlock) || in_array('ShowOther', $this->options->sidebarBlock)): ?>
+                <hr />
+                <p><span id="bd-theme-text">当前主题：</span><span id="bd-theme-status"></span></p>
+                <div id="bd-theme" aria-label="切换主题" tabindex="0" class="input-group mb-3">
+                    <button type="button" class="btn btn-light text-dark form-control" data-bs-theme-value="light">浅色模式</button>
+                    <button type="button" class="btn btn-dark form-control" data-bs-theme-value="dark">深色模式</button>
+                    <button type="button" class="btn btn-secondary form-control" data-bs-theme-value="auto">自动</button>
+                </div>
                 <aside class="widget widget_meta">
-                    <h4 class="widget-title"><?php _e('功能'); ?></h4>			
-                    <ul>
+                    <!-- <h4 class="widget-title"><?php _e('功能'); ?></h4> -->
+                    <div class="input-group">
                     <?php if($this->user->hasLogin()): ?>
-                        <li class="last"><a href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a></li>
-                        <li><a href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a></li>
+                        <a class="last btn btn-primary form-control" href="<?php $this->options->adminUrl(); ?>"><?php _e('进入后台'); ?> (<?php $this->user->screenName(); ?>)</a>
+                        <a class="btn btn-danger" href="<?php $this->options->logoutUrl(); ?>"><?php _e('退出'); ?></a>
                     <?php else: ?>
-                        <li class="last"><a href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a></li>
+                        <a class="last btn btn-primary form-control" href="<?php $this->options->adminUrl('login.php'); ?>"><?php _e('登录'); ?></a>
+                        <?php if ($this->options->allowRegister): ?><a class="last btn btn-success form-control" href="<?php $this->options->adminUrl('register.php'); ?>"><?php _e('注册'); ?></a><?php endif; ?>
                     <?php endif; ?>
-                    </ul>
+                    </div>
                 </aside>
             <?php endif; ?>
         </div>
