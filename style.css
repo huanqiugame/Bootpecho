@@ -37,12 +37,51 @@ p {
 pre code {
     background-color: unset;
 }
-/* 除了h1以外的所有元素 */
+blockquote {
+    padding-left: 8px;
+    border-left-color: gray;
+    border-left-style: solid;
+}
 * :not(h1) {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
 }
 
-/* Code below only works for Typecho */
+/* Code below only works for some of Typecho themes */
 .comment-list {
     list-style: none;
+}
+.blockquote_note {
+    border-left-color: #2E67D3;
+}
+.blockquote_note::before {
+    content: "ℹ️ NOTE";
+    color: #2E67D3;
+}
+.blockquote_tip {
+    border-left-color: #428646;
+}
+.blockquote_tip::before {
+    content: "💡 TIP";
+    color: #428646;
+}
+.blockquote_important {
+    border-left-color: #7B52D7;
+}
+.blockquote_important::before {
+    content: "🔔 IMPORTANT";
+    color: #7B52D7;
+}
+.blockquote_warning {
+    border-left-color: #936921;
+}
+.blockquote_warning::before {
+    content: "⚠️ WARNING";
+    color: #936921;
+}
+.blockquote_caution {
+    border-left-color: #BE3536;
+}
+.blockquote_caution::before {
+    content: "⛔️ CAUTION";
+    color: #BE3536;
 }

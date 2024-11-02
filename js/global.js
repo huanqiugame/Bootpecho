@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    //// 为媒体元素添加fluid和rounded类
     // 获取页面中所有的img和video元素
     const mediaElements = document.querySelectorAll('img, video');
 
@@ -14,4 +15,28 @@ document.addEventListener('DOMContentLoaded', function() {
             media.classList.add('rounded');
         }
     });
+
+    //// 添加GitHub Style Alert
+    let all_blockquote = document.querySelectorAll("blockquote");
+    const colorMap = {
+        "[!NOTE]": "note",
+        "[!TIP]": "tip",
+        "[!IMPORTANT]": "important",
+        "[!WARNING]": "warning",
+        "[!CAUTION]": "caution"
+    };
+
+    if (all_blockquote && all_blockquote.length > 0) {
+        all_blockquote.forEach(blockquote => {
+            if (blockquote.innerText) {
+                for (let key in colorMap) {
+                    if (blockquote.innerText.startsWith(key)) {
+                        blockquote.innerText = blockquote.innerText.slice(key.length);  
+                        blockquote.classList.add(`blockquote_${colorMap[key]}`);
+                        break;
+                    }
+                }
+            }
+        });
+    }
 });
