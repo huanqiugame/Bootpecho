@@ -9,7 +9,7 @@
  * @package Bootpecho
  * @author 浣秋
  * @version 1.0
- * @link http://huanqiu.xiaocaozz.top
+ * @link https://leoworld.top
  */
  
  $this->need('header.php');

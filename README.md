@@ -12,7 +12,7 @@
 
 包内含cdnjs分发的Bootstrap文件，作者：https://getbootstrap.com ，在您的网站底部也会有相关引用。
 
-样式效果请见我的博客：http://huanqiu.xiaocaozz.top 。
+样式效果请见我的博客：https://leoworld.top 。
 
 ![screenshot](screenshot.png)
 

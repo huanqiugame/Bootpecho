@@ -56,6 +56,7 @@ blockquote {
 .blockquote_note::before {
     content: "ℹ️ NOTE";
     color: #2E67D3;
+    font-weight: bold;
 }
 .blockquote_tip {
     border-left-color: #428646;
@@ -63,6 +64,7 @@ blockquote {
 .blockquote_tip::before {
     content: "💡 TIP";
     color: #428646;
+    font-weight: bold;
 }
 .blockquote_important {
     border-left-color: #7B52D7;
@@ -70,6 +72,7 @@ blockquote {
 .blockquote_important::before {
     content: "🔔 IMPORTANT";
     color: #7B52D7;
+    font-weight: bold;
 }
 .blockquote_warning {
     border-left-color: #936921;
@@ -77,6 +80,7 @@ blockquote {
 .blockquote_warning::before {
     content: "⚠️ WARNING";
     color: #936921;
+    font-weight: bold;
 }
 .blockquote_caution {
     border-left-color: #BE3536;
@@ -84,4 +88,5 @@ blockquote {
 .blockquote_caution::before {
     content: "⛔️ CAUTION";
     color: #BE3536;
+    font-weight: bold;
 }
