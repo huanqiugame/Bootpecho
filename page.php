@@ -3,7 +3,7 @@
 	<div id="content" role="main">			
 	<article>
     	<header class="mt-3">
-        	<h1 class="entry-title">
+        	<h1 class="entry-title display-4">
             	<?php $this->title() ?>
             </h1>
         </header>

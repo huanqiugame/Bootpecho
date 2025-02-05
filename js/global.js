@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (blockquote.innerText) {
                 for (let key in colorMap) {
                     if (blockquote.innerText.startsWith(key)) {
-                        blockquote.innerText = blockquote.innerText.slice(key.length);  
+                        blockquote.removeChild(blockquote.firstElementChild);
                         blockquote.classList.add(`blockquote_${colorMap[key]}`);
                         break;
                     }

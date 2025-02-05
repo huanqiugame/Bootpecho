@@ -3,7 +3,7 @@
 	<div id="content" role="main">			
 	<article>
     	<header class="mt-3">
-			<h1 class="card-title mb-3" style="display: inline;">
+			<h1 class="card-title mb-3 display-4" style="display: inline;">
 				<a rel="bookmark"><?php $this->title() ?></a>
 			</h1>
                         <br />
