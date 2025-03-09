@@ -1,7 +1,7 @@
 <div id="comments">
     <?php $this->comments()->to($comments); ?>
     <?php if ($comments->have()): ?>
-    <h1 class="display-4">评论</h1>
+    <h1 class="display-3">评论</h1>
     <p class="comments-title">
     <?php $this->commentsNum(_t('暂无评论'), _t('共1条评论'), _t('共%d条评论')); ?></p>
     
@@ -25,7 +25,7 @@
     <?php if($this->allow('comment')): ?>
 
     <div class="respond" id="<?php $this->respondId(); ?>">
-        <h1 id="reply-title" class="display-<?php if ($this->commentsNum > 0): ?>5<?php else: ?>4<?php endif; ?>">发表评论 <small><?php $comments->cancelReply(); ?></small></h<?php if ($this->commentsNum > 0): ?>2<?php else: ?>1<?php endif; ?>>
+        <h1 id="reply-title" class="display-<?php if ($this->commentsNum > 0): ?>4<?php else: ?>3<?php endif; ?>">发表评论 <small><?php $comments->cancelReply(); ?></small></h<?php if ($this->commentsNum > 0): ?>2<?php else: ?>1<?php endif; ?>>
         <form method="post" action="<?php $this->commentUrl() ?>" id="commentform">
         <?php if($this->user->hasLogin()): ?>
             <p>以<a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>的身份登录。<a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('登出？'); ?></a></p>

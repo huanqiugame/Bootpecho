@@ -15,7 +15,10 @@
         return storedTheme
       }
   
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      // return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      // ======= Customization starts =======
+      return 'auto'
+      // ======= Customization ends =======
     }
     
     const setTheme = theme => {
@@ -40,7 +43,7 @@
   
       document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
         // element.classList.remove('active')
-        // ======= Customization starts =======
+        // ======= Customization starts (line(s) above are original) =======
         element.classList.remove('disabled')
         // ======= Customization ends =======
         element.setAttribute('aria-pressed', 'false')
@@ -56,7 +59,7 @@
       // ======= Customization ends =======
 
       // btnToActive.classList.add('active')
-      // ======= Customization starts =======
+      // ======= Customization starts (line(s) above are original) =======
       btnToActive.classList.add('disabled')
       // ======= Customization ends =======
       btnToActive.setAttribute('aria-pressed', 'true')

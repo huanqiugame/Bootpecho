@@ -18,7 +18,7 @@
 <div id="primary">
     <div id="content" role="main">
         <hgroup>
-        <h1>
+        <h1 class="display-3">
 				<?php if ($this->options->logoUrl): ?>
 				<img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
 				<?php endif; ?>
