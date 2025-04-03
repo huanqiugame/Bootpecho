@@ -15,6 +15,9 @@ h2::after {
 h3::after {
     content: " h3";
 }
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+}
 code {
     background-color: var(--xc-code-background-color);
     padding: 2px;

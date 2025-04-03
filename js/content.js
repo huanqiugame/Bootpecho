@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
 
     // 监听滚动事件以更新当前高亮的目录项
-    window.addEventListener('scroll', highlightCurrentHeading);
-    highlightCurrentHeading();  // 初始化高亮
+    // window.addEventListener('scroll', highlightCurrentHeading);
+    // highlightCurrentHeading();  // 初始化高亮
 
 });

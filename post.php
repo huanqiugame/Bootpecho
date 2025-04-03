@@ -16,17 +16,18 @@
             </div> -->
             
         </header>
+        <hr />
         <div class="entry-content mt-2">
-            <div class="mb-3 ms-3 float-end rounded p-3 card toc-container" id="content_sidebar">
+            <div class="mb-3 ms-3 float-end p-3 toc-container border-start" id="content_sidebar">
                 <div id="post-toc">
-                    <strong class="card-title">文章目录</strong>
+                    <strong>文章目录</strong>
                     <ul>
                         
                     </ul>
                 </div>
                 <hr />
                 <div>
-                    <strong class="card-title">文章标签</strong>
+                    <strong>文章标签</strong>
                     <p><?php $this->tags(', ', true, 'none'); ?></p>
                 </div>
             </div>
