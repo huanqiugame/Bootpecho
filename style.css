@@ -38,9 +38,22 @@ pre code {
     background-color: unset;
 }
 blockquote {
-    padding-left: 8px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 4px;
     border-left-color: gray;
     border-left-style: solid;
+}
+blockquote > :last-child {
+    margin-bottom: 0;
+}
+blockquote > :first-child {
+    margin-top: 1rem;
+}
+div > :last-child {
+    margin-bottom: 0;
 }
 * :not(h1) {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
@@ -54,7 +67,7 @@ blockquote {
     border-left-color: #2E67D3;
 }
 .blockquote_note::before {
-    content: "ℹ️ NOTE";
+    content: "ℹ️ Note";
     color: #2E67D3;
     font-weight: bold;
 }
@@ -62,7 +75,7 @@ blockquote {
     border-left-color: #428646;
 }
 .blockquote_tip::before {
-    content: "💡 TIP";
+    content: "💡 Tip";
     color: #428646;
     font-weight: bold;
 }
@@ -70,7 +83,7 @@ blockquote {
     border-left-color: #7B52D7;
 }
 .blockquote_important::before {
-    content: "🔔 IMPORTANT";
+    content: "🔔 Important";
     color: #7B52D7;
     font-weight: bold;
 }
@@ -78,7 +91,7 @@ blockquote {
     border-left-color: #936921;
 }
 .blockquote_warning::before {
-    content: "⚠️ WARNING";
+    content: "⚠️ Warning";
     color: #936921;
     font-weight: bold;
 }
@@ -86,7 +99,18 @@ blockquote {
     border-left-color: #BE3536;
 }
 .blockquote_caution::before {
-    content: "⛔️ CAUTION";
+    content: "⛔️ Caution";
     color: #BE3536;
     font-weight: bold;
+}
+.toc-container {
+    max-width: 300px;
+}
+@media (max-width: 575px) {
+    .toc-container {
+        max-width: 100% !important;
+        float: none !important;
+        margin-left: 0 !important;
+        margin-top: 1rem;
+    }
 }

@@ -54,7 +54,7 @@
         </form>
     </div>
 <?php else: ?>
-	<p><?php _e('评论已关闭'); ?></p>
+    <p><?php _e('评论已关闭'); ?></p>
 <?php endif; ?>
 
 </div>

@@ -19,9 +19,9 @@
     <div id="content" role="main">
         <hgroup>
         <h1 class="display-3">
-				<?php if ($this->options->logoUrl): ?>
-				<img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
-				<?php endif; ?>
+                <?php if ($this->options->logoUrl): ?>
+                <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
+                <?php endif; ?>
                 <?php if ($this->is('category')): ?>
                 “<?php $this->archiveTitle("", "", ""); ?>”分类
                 <?php elseif ($this->is('tag')): ?>
@@ -40,7 +40,7 @@
             <?php else: ?>
             <p class="site-description"><?php echo $this->getDescription(); ?></p>
             <?php endif; ?>
-		</hgroup>
+        </hgroup>
         <!-- 如果搜索结果不存在时，显示搜索框。 -->
         <?php if (!$this->have()): ?>
             <hr />

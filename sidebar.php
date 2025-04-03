@@ -10,7 +10,7 @@
                     <!-- <button class="search-form-input btn btn-success w-100 mb-3">高级搜索</button> -->
                     <form class="input-group mb-3" role="search" id="searchform" method="post" action="<?php $this->options->siteUrl(); ?>">
                         <input type="text" class="form-control text" placeholder="搜索标题、内容、时间、作者及更多" aria-label="Search" name="s" id="s">
-<input class="btn btn-primary" type="submit" id="searchsubmit" value="搜索">
+                        <input class="btn btn-primary" type="submit" id="searchsubmit" value="搜索">
                     </form>
                 </aside>
             <?php endif; ?>
