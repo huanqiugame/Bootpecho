@@ -33,20 +33,20 @@
             <p class="comment-notes">无需登录，电子邮件地址不会被公开。<span class="required">*</span>为必填。</p>							
             <div class="input-group mb-3">
                 <span class="input-group-text border-warning">姓名 <span class="required">*</span></span>
-                <input id="author" name="author" type="text" class="form-control border-warning" placeholder="Author" value="<?php $this->remember('author'); ?>" aria-required="true" aria-label="Author">
+                <input id="author" name="author" type="text" class="form-control border-warning" placeholder="Author" value="<?php $this->remember('author'); ?>" aria-required="true" aria-label="Author" required>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text <?php if ($this->options->commentsRequireMail): ?>border-warning<?php endif; ?>">电子邮件<?php if ($this->options->commentsRequireMail): ?><span class="required">*</span><?php endif; ?></span>
-                <input id="email" name="mail" type="text" class="form-control <?php if ($this->options->commentsRequireMail): ?>border-warning<?php endif; ?>" placeholder="Email" value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail): ?>aria-required="true"<?php endif; ?> aria-label="url">
+                <input id="email" name="mail" type="text" class="form-control <?php if ($this->options->commentsRequireMail): ?>border-warning<?php endif; ?>" placeholder="Email" value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail): ?>aria-required="true" required<?php endif; ?> aria-label="url">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>">站点<?php if ($this->options->commentsRequireURL): ?><span class="required">*</span><?php endif; ?></span>
-                <input id="url" name="url" type="text" class="form-control <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>" placeholder="example.com" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?>aria-required="true"<?php endif; ?> aria-label="url">
+                <input id="url" name="url" type="text" class="form-control <?php if ($this->options->commentsRequireURL): ?>border-warning<?php endif; ?>" placeholder="example.com" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?>aria-required="true" required<?php endif; ?> aria-label="url">
             </div>
         <?php endif; ?>
             <div class="input-group mb-3">
                 <span class="input-group-text border-warning">评论<span class="required">*</span></span>
-                <textarea rows="6" class="form-control border-warning" id="comment" name="text" aria-label="评论"><?php echo $this->remember('text'); ?></textarea>
+                <textarea rows="6" class="form-control border-warning" id="comment" name="text" aria-label="评论" required><?php echo $this->remember('text'); ?></textarea>
             </div>
             <p class="form-submit">
                 <input class="btn btn-outline-primary w-100" name="submit" type="submit" id="submit" value="提交">

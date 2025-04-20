@@ -19,8 +19,8 @@
 ## 快速开始
 
 1. 点击“Code”，“Download ZIP”下载压缩包。
-2. 解压ZIP包，重命名为`Bootpecho`。
-3. 将`Bootpecho`文件夹放入您的网站目录下的`usr/themes`目录，并在Typecho后台启用。
+2. 解压ZIP包，重命名为`bootpecho`。
+3. 将`bootpecho`文件夹放入您的网站目录下的`usr/themes`目录，并在Typecho后台启用。
 
 ---
 
