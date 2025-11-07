@@ -55,28 +55,28 @@
 
         <div id="articles" style="column-count: 1;">
             <?php while($this->next()): ?>
-                    <article class="card mt-3 mb-3">
-                        <div class="card-header">
+                    <article class="card mt-3 mb-3 rounded-4">
+                        <div class="card-header border-bottom-0 rounded-4">
                             <div style="display: inline-flex; float: left;">
-                                <span>作者：<span><a href="<?php $this->author->permalink(); ?>" title="查看所有由 <?php $this->author(); ?> 发布的文章" rel="author"><?php $this->author(); ?></a></span></span>，属于<?php $this->category('、') ?>分类。
+                            <time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日'); ?></time>｜
+                            <a href="<?php $this->author->permalink(); ?>" title="查看所有由 <?php $this->author(); ?> 发布的文章" rel="author"><?php $this->author(); ?></a>｜
+                                <?php $this->category('、') ?>
                             </div>
                             <div style="display: inline-flex; float: right;">
-                                <?php Postviews($this); ?>
+                                <?php Postviews($this); ?>｜
+                                <a href="<?php $this->permalink() ?>#comments" title="<?php $this->title() ?> 上的评论"><?php $this->commentsNum('无评论', '1条评论', '%d条评论'); ?></a>
                             </div>
                         </div>
                         <div class="card-body">
-                        <header>
-                            <h2 class="card-title mb-2" style="display: inline;">
-                                <a href="<?php $this->permalink() ?>" title="链向 <?php $this->title() ?> 的固定链接" rel="bookmark"><?php $this->sticky(); $this->title() ?></a>
-                            </h2>
-                            <br />
-                        </header>
-                        <div class="entry-content mt-2">
-                            <?php $this->content('继续阅读→') ?>
-                        </div>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-body-secondary" style="display: inline-flex; float: left;">上次更新：<a title="<?php $this->date('G:i') ?>" rel="bookmark"><time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日H:i'); ?></time></a></small><small class="text-body-secondary ms-3" style="display: inline-flex; float: right;"><a href="<?php $this->permalink() ?>#comments" title="<?php $this->title() ?> 上的评论"><?php $this->commentsNum('暂无评论', '共1条评论', '共%d条评论'); ?></a></small>
+                            <header>
+                                <h2 class="card-title mb-2" style="display: inline;">
+                                    <a href="<?php $this->permalink() ?>" title="链向 <?php $this->title() ?> 的固定链接" rel="bookmark"><?php $this->sticky(); $this->title() ?></a>
+                                </h2>
+                                <br />
+                            </header>
+                            <div class="entry-content mt-2">
+                                <?php $this->content('继续阅读→') ?>
+                            </div>
                         </div>
                     </article>
             <?php endwhile; ?>
