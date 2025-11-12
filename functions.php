@@ -93,7 +93,7 @@ echo $commentClass;
             Typecho_Cookie::set('contents_views', $cookie);
         }
     }
-    echo $exist == 0 ? ' 暂无阅读' : ' 阅读：' .$exist;
+    echo $exist == 0 ? '0' : '' .$exist;
 }
 
 ?>
