@@ -1,13 +1,19 @@
 :root {
     --xc-code-background-color: rgba(214, 51, 132, 0.1);
+    --bs-body-line-height: 1.65;
+    --bs-body-font-size: 1rem;
+    font-size: 18px;
 }
 a, a:hover {
-    text-underline-offset:0.25em;
+    text-underline-offset:0.25rem;
+}
+h1 { 
+    font-size: 2.25rem;
 }
 h2::after, h3::after {
     color: gray;
     font-weight: lighter;
-    font-size: 0.5em;
+    font-size: 0.8rem;
 }
 h2::after {
     content: " h2";
@@ -36,6 +42,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 p {
     word-break: break-word;
+    line-height: 1.86;
+    margin-bottom: 1.2rem;
 }
 pre code {
     background-color: unset;
@@ -108,6 +116,10 @@ div > :last-child {
 }
 .toc-container {
     max-width: 300px;
+}
+.footer-link {
+    text-decoration: none;
+    color: rgba(var(--bs-link-color-rgb), 75%);
 }
 @media (max-width: 575px) {
     .toc-container {

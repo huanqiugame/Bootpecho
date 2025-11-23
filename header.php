@@ -28,7 +28,7 @@
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>
 </head>
-<body class="container mt-3 mb-5">
+<body class="container mt-3 mb-5 px-5">
 
 <div id="page">
     <header id="masthead" class="site-header" role="banner">
@@ -42,11 +42,13 @@
             </div>
         </nav>
     </header><!-- #masthead -->
+    <?php if (!$this->is('index')): ?>
     <div class="crumbs_patch my-2">
         <a href="<?php $this->options->siteUrl(); ?>">首页</a>
-        <?php if (!$this->is('index')): ?> &raquo; <?php endif; ?></li>
-        <?php if ($this->is('index')): ?><!-- 页面为首页时 -->
-        <?php elseif ($this->is('post')): ?><!-- 页面为文章单页时 -->
+            &raquo;
+    <?php endif; ?>
+
+        <?php if ($this->is('post')): ?><!-- 页面为文章单页时 -->
             <?php $this->category(); ?> &raquo; <?php $this->title() ?>
         <?php elseif ($this->is('author')): ?>
             Author &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
@@ -59,7 +61,10 @@
         <?php else: ?><!-- 页面为其他页时 -->
             <?php $this->archiveTitle(' &raquo; ','',''); ?>
         <?php endif; ?>
+
+    <?php if (!$this->is('index')): ?>
     </div>
+    <?php endif; ?>
 
 
     <div id="main">

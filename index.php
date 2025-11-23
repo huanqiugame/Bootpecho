@@ -18,7 +18,7 @@
 <div id="primary">
     <div id="content" role="main">
         <hgroup>
-        <h1 class="display-3">
+        <h1 class="display-4 mb-2">
                 <?php if ($this->options->logoUrl): ?>
                 <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                 <?php endif; ?>
@@ -102,7 +102,7 @@
             <?php endwhile; ?>
         </div>
         <hr id="beforePageNavHr" />
-        <?php $this->pageNav('前一页', '后一页', 3, '...', [
+        <?php $this->pageNav('上一页', '下一页', 3, '...', [
             'textTag' => 'span',
             'prevClass' => '',
             'nextClass' => '',
