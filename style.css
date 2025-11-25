@@ -18,6 +18,9 @@ h2::after, h3::after {
 h2::after {
     content: " h2";
 }
+.card-title::after {
+    content: "";
+}
 h3::after {
     content: " h3";
 }
@@ -121,7 +124,10 @@ div > :last-child {
     text-decoration: none;
     color: rgba(var(--bs-link-color-rgb), 75%);
 }
-@media (max-width: 575px) {
+#page {
+    max-width: 1000px;
+}
+@media (max-width: 700px) {
     .toc-container {
         max-width: 100% !important;
         float: none !important;

@@ -28,9 +28,9 @@
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>
 </head>
-<body class="container mt-3 mb-5 px-5">
+<body class="container-xl mt-3 mb-5">
 
-<div id="page">
+<div id="page" class="m-auto">
     <header id="masthead" class="site-header" role="banner">
         <nav class="navbar navbar-expand bg-body-tertiary mb-3">
             <div class="container-fluid">
