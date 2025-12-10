@@ -16,11 +16,24 @@
 
 ![screenshot](screenshot.png)
 
+下述三种下载方式都会将本README文件一并下载到网站主题目录下，方便您查看本主题的其他信息。
+
 ## 快速开始
 
 1. 点击“Code”，“Download ZIP”下载压缩包。
 2. 解压ZIP包，重命名为`bootpecho`。
 3. 将`bootpecho`文件夹放入您的网站目录下的`usr/themes`目录，并在Typecho后台启用。
+
+## 历史版本
+
+下载历史版本的步骤和上述步骤类似。
+
+1. 前往[Releases](https://github.com/huanqiugame/Bootpecho/releases)页面找到你需要的历史版本。
+2. 点击对应Release的“Source Code”链接，下载ZIP文件。
+3. 解压ZIP包，重命名为`bootpecho`。
+4. 将`bootpecho`文件夹放入您的网站目录下的`usr/themes`目录，并在Typecho后台启用。
+
+你还可以点击“Code”按钮下方的[Commits](https://github.com/huanqiugame/Bootpecho/commits/main/)按钮查看更详细的更新日志。其他功能你可自行探索。
 
 ## 半自动更新
 
@@ -31,7 +44,7 @@
 3. 输入`git clone https://github.com/huanqiugame/bootpecho.git`来将本存储库下载到你的电脑上。
 4. 想要更新时，再次`cd <usr/themes/bootpecho路径>`，输入`git pull`即可。
 
-这样下载还会将本README文件一并下载到网站主题目录下，方便您查看本主题的其他信息。
+Git默认处于`main`分支。此项目在不同时期可能有不同的分支。请自行了解Git分支功能的使用方法。
 
 ---
 
