@@ -23,16 +23,3 @@ if (pagination) {
 } else {
     beforePageNavHr.remove();
 }
-
-const articles = document.getElementById('articles');
-const articleCount = articles.children.length;
-// 如果屏幕元素大于992px且至少有三篇文章，则CSS分两栏
-function autoSplitColumn() {
-    if (window.innerWidth > 991 && articleCount > 2) {
-        articles.style.columnCount = 2;
-    } else {
-        articles.style.removeProperty('column-count');
-    }
-}
-autoSplitColumn();
-window.onresize = autoSplitColumn;

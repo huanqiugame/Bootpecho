@@ -4,6 +4,10 @@
     --bs-body-font-size: 1rem;
     font-size: 18px;
 }
+h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, li, dl, dt, dd, span, div, pre, code, a {
+    text-autospace: normal; /* Some browsers may encounter inconsistencies when handling */
+    -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+}
 a, a:hover {
     text-underline-offset:0.25rem;
 }
@@ -126,6 +130,22 @@ div > :last-child {
 }
 #page {
     max-width: 1000px;
+}
+/* 默认单列 */
+#articles {
+    column-count: 1;
+}
+
+/* 在宽度大于 991px 且文章数量超过 2 篇时显示两列 */
+@media (min-width: 992px) {
+    #articles:has(:nth-child(4)) {
+        column-count: 2;
+    }
+}
+@media (max-width: 992px) and (min-width: 500px) {
+    body {
+        max-width: calc(100vw - (100vw - 500px) * 0.2);
+    }
 }
 @media (max-width: 700px) {
     .toc-container {

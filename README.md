@@ -1,6 +1,16 @@
-# Typecho主题Bootpecho v1.0
+# Typecho主题Bootpecho v1.0.0
 
 以Bootstrap 5提供的组件重新思考设计的Typecho主题。
+
+> [!NOTE]
+> 
+> 此为开发（`dev`）分支，可能会出现以下情况：
+> 
+> - 改动会较为频繁
+> - 可能出现较多 Bug
+> - 可能应用更多新的 Web 特性，引发一定的兼容性问题
+> 
+> 请谨慎更新。详细信息请仔细阅读提交记录。
 
 大幅修改自Typecho主题Twenty Twelve（由怡红公子从WordPress版本移植）。
 

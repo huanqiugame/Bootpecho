@@ -30,7 +30,12 @@
 </head>
 <body class="container-xl mt-3 mb-5">
 
-<div id="page" class="m-auto">
+<?php if (!$this->is('post') || $this->is('page')): ?>
+    <div class="m-auto">
+<?php else: ?>
+    <div id="page" class="m-auto">
+<?php endif; ?>
+
     <header id="masthead" class="site-header" role="banner">
         <nav class="navbar navbar-expand bg-body-tertiary mb-3">
             <div class="container-fluid">

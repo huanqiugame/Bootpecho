@@ -8,7 +8,7 @@
  * 
  * @package Bootpecho
  * @author 浣秋
- * @version 1.0
+ * @version 1.0.0
  * @link https://leoworld.top
  */
  
@@ -17,7 +17,7 @@
 
 <div id="primary">
     <div id="content" role="main">
-        <hgroup>
+        <hgroup class="px-2">
         <h1 class="display-5">
                 <?php if ($this->options->logoUrl): ?>
                 <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
@@ -50,13 +50,13 @@
                 <input class="btn btn-primary" type="submit" id="searchsubmit" value="搜索">
             </form>
         <?php else: ?>
-            <hr class="mb-0" />
+            <!-- <hr class="mb-0" /> -->
         <?php endif; ?>
 
-        <div id="articles" style="column-count: 1;" class="mt-3">
+        <div id="articles" class="mt-3 mb-3">
             <?php while($this->next()): ?>
                     <article class="card mt-3 mb-3" style="border-radius: 1.3em;">
-                        <div class="card-header border-bottom-0 rounded-pill py-1" style="display: inline-flex; margin: 0.25em;">
+                        <div class="card-header border-bottom-0 rounded-pill py-1" style="margin: 0.25em;">
                             <div style="display: inline-flex; float: left; align-items: center;">
                                 <span class="me-2">
                                     <time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日'); ?></time>
@@ -101,10 +101,6 @@
                     </article>
             <?php endwhile; ?>
         </div>
-        <script>
-            const firstChild = document.getElementById('articles').firstElementChild.classList.remove('mt-3');
-        </script>
-        <hr id="beforePageNavHr" />
         <?php $this->pageNav('前一页', '后一页', 3, '...', [
             'textTag' => 'span',
             'prevClass' => '',
