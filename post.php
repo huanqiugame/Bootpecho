@@ -34,8 +34,29 @@
             
         </header>
         <br />
-        <div class="entry-content mt-2">
-            <div class="mb-3 ms-3 float-end p-3 toc-container border-start" id="content_sidebar">
+        <div style="
+                <?php 
+                $containerStyle = $this->fields->containerStyle;
+                if (isset($containerStyle)) {
+                    echo $containerStyle;
+                }
+                ?>
+            " class="
+                <?php 
+                $containerClass = $this->fields->containerClass;
+                if (isset($containerClass)) {
+                    echo $containerClass;
+                }
+                ?>
+            ">
+            <div class="mb-3 ms-3 float-end p-3 toc-container border-start
+                <?php 
+                $tocNoFloat = $this->fields->tocNoFloat;
+                if (isset($tocNoFloat)) {
+                    echo "toc-container-no-float border rounded-4";
+                }
+                ?>
+            " id="content_sidebar">
                 <div id="post-toc">
                     <strong>文章目录</strong>
                     <ul>
@@ -48,7 +69,9 @@
                     <p><?php $this->tags('、', true, '无'); ?></p>
                 </div>
             </div>
-            <?php $this->content() ?>
+            <div class="entry-content mt-2">
+                <?php $this->content() ?>
+            </div>
         </div>
     </article>
     <!-- <nav class="nav-single">

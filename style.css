@@ -124,6 +124,20 @@ div > :last-child {
 .toc-container {
     max-width: 300px;
 }
+@media (max-width: 750px) {
+    .toc-container {
+        max-width: 100% !important;
+        float: none !important;
+        margin-left: 0 !important;
+        margin-top: 1rem;
+    }
+}
+.toc-container-no-float { /* 取消浮动目录浮动 注意post.php需同步 */
+    max-width: 100% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-top: 1rem;
+}
 .footer-link {
     text-decoration: none;
     color: rgba(var(--bs-link-color-rgb), 75%);
@@ -147,11 +161,4 @@ div > :last-child {
         max-width: calc(100vw - (100vw - 500px) * 0.2);
     }
 }
-@media (max-width: 700px) {
-    .toc-container {
-        max-width: 100% !important;
-        float: none !important;
-        margin-left: 0 !important;
-        margin-top: 1rem;
-    }
-}
+
