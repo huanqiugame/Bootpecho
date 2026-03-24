@@ -23,17 +23,17 @@
                 <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                 <?php endif; ?>
                 <?php if ($this->is('category')): ?>
-                “<?php $this->archiveTitle("", "", ""); ?>”分类
+                    “<?php $this->archiveTitle("", "", ""); ?>”分类
                 <?php elseif ($this->is('tag')): ?>
-                “<?php $this->archiveTitle("", "", ""); ?>”标签
+                    “<?php $this->archiveTitle("", "", ""); ?>”标签
                 <?php elseif ($this->is('author')): ?>
-                “<?php $this->archiveTitle("", "", ""); ?>”的作品
+                    “<?php $this->archiveTitle("", "", ""); ?>”的作品
                 <?php elseif ($this->is('date')): ?>
-                <?php $this->archiveTitle("", "", "");?>
+                    <?php $this->archiveTitle("", "", "");?>
                 <?php elseif ($this->is('search')): ?>
-                “<?php $this->archiveTitle("", "", ""); ?>”的搜索结果
+                    “<?php $this->archiveTitle("", "", ""); ?>”的搜索结果
                 <?php else: ?>
-                <?php $this->options->title() ?>
+                    <?php $this->options->title() ?>
                 <?php endif; ?>
             </h1>
             <?php if ($this->is('author') || $this->is('search') || $this->is('tag')): ?>
@@ -55,25 +55,21 @@
 
         <div id="articles" class="mt-3 mb-3">
             <?php while($this->next()): ?>
-                <article class="card mb-3" style="border-radius: 1.3em;">
-                    <div class="card-header border-bottom-0 rounded-pill py-1" style="margin: 0.25em;">
-                        <div class="article-property-pill-container" style="">
-                            <span>
-                                <span class="btn btn-sm rounded-pill article-property-pill">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection me-1" viewBox="0 0 16 16">
-                                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
-                                    </svg>
-                                    <?php $this->category('、') ?>
-                                </span>
-                            </span>
-                            <!-- <span class="me-2">
-                                <a href="<?php $this->author->permalink(); ?>">
+                <article class="card article-tile-container">
+                    <div class="card-header article-tile-header border-bottom-0 rounded-pill py-1">
+                        <div class="article-property-pill-container me-2">
+                            <a class="article-property-pill-container" href="<?php $this->author->permalink(); ?>">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil me-1" viewBox="0 0 16 16">
                                     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                                 </svg>
                                 <?php $this->author(); ?>
-                                </a>
-                            </span> -->
+                            </a>
+                        </div>
+                        <div class="article-property-pill-container me-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection me-1" viewBox="0 0 16 16">
+                                <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z"/>
+                            </svg>
+                            <?php $this->category('<span class="mx-1">·</span>') ?>
                         </div>
                         <div style="display: inline-flex; float: right; margin-left: auto; align-items: center;">
                             <?php Postviews($this); ?>
@@ -84,15 +80,32 @@
                             </span>
                         </div>
                     </div>
-                    <a href="<?php $this->permalink() ?>" class="article-tile-url card-body pt-2">
-                        <h2 class="card-title mb-2 article-tile-title" style="display: inline;"><?php $this->title() ?></h2>
-                        <div class="article-tile-summary">
-                            <?php $this->excerpt(200, '') ?>
+                    <div class="card-body pt-2">
+                        <div class="article-tile-content">
+                            <a href="<?php $this->permalink() ?>" class="article-tile-url">
+                                <h2 class="card-title mb-2 article-tile-title" style="display: inline;"><?php $this->title() ?></h2>
+                                <div class="article-tile-summary">
+                                    <div class="article-tile-summary-text">
+                                        <?php $this->excerpt(200, '') ?>
+                                    </div>
+                                </div>
+                                <div class="article-tile-date">
+                                    <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日'); ?></time>
+                                </div>
+                            </a>
+                            <div class="article-tile-property">
+                                <div class="article-property-pill-container mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags me-1" viewBox="0 0 16 16">
+                                        <path d="M3 2v4.586l7 7L14.586 9l-7-7zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586z"/>
+                                        <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="article-tile-property-enum article-tile-property">
+                                        <?php $this->tags('<span class="mx-1">·</span>') ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="article-tile-date">
-                            <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日'); ?></time>
-                        </div>
-                    </a>
+                    </div>
                 </article>
             <?php endwhile; ?>
         </div>
