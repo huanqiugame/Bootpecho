@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, li, dl, dt, dd, span, div, pre, c
     -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
 }
 a, a:hover {
-    text-underline-offset:0.25rem;
+    text-underline-offset: 0.25rem;
 }
 h1 { 
     font-size: 2.25rem;
@@ -73,11 +73,11 @@ blockquote > :first-child {
 div > :last-child {
     margin-bottom: 0;
 }
-* :not(h1) {
+/* * :not(h1) {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
-}
+} */
 
-/* Code below only works for some of Typecho themes */
+/* Code below only works for specific Typecho themes */
 .comment-list {
     list-style: none;
 }
@@ -147,13 +147,17 @@ div > :last-child {
 }
 /* 默认单列 */
 #articles {
-    column-count: 1;
+    /* column-count: 1; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 1rem;
+
 }
 
 /* 在宽度大于 991px 且文章数量超过 2 篇时显示两列 */
 @media (min-width: 992px) {
     #articles:has(:nth-child(4)) {
-        column-count: 2;
+        grid-template-columns: 1fr 1fr;
     }
 }
 @media (max-width: 992px) and (min-width: 500px) {
@@ -162,3 +166,49 @@ div > :last-child {
     }
 }
 
+/* Bootstrap 5 Tweaks */
+
+.card-body {
+    position: relative;
+}
+.article-property-pill {
+    background-color: var(--bs-body-bg);
+    border-color: var(--bs-border-color);
+    border-width: 0px;
+    box-shadow: 0px 0px 20px rgba(var(--bs-body-color-rgb), 10%);
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+}
+.article-property-pill-container {
+    display: inline-flex;
+    float: left;
+    align-items: center;
+    margin-left: -0.75rem;
+}
+.article-tile-summary {
+    color: rgba(var(--bs-body-color-rgb), 60%);
+    line-height: 1.6;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    flex-grow: 1;
+}
+.article-tile-url {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.article-tile-title {
+    font-size: 1.6rem;
+}
+.article-tile-date {
+    margin-top: 0.5rem;
+    color: rgba(var(--bs-body-color-rgb), 60%);
+}
