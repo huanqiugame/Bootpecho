@@ -30,7 +30,20 @@
 </head>
 <body class="container mt-3 mb-5">
 
+<!-- 文章限制容器 -->
 <div id="page">
+
+<!-- LaTeX 渲染 -->
+<?php if ($this->is('post') && $this->fields->isLatex == 1): ?>
+<script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.42/dist/contrib/mhchem.min.js" integrity="sha384-fB8BH//9nBzROkMUsu/Dr35jWHIbnKesUo9rW0hfEgw8mZGnkAyBAjKX9F98OVuo"  crossorigin="anonymous"></script>
+
+<script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<?php endif; ?>
+<!-- LaTeX 渲染结束 -->
+
     <header id="masthead" class="site-header" role="banner">
         <nav class="navbar navbar-expand bg-body-tertiary mb-3">
             <div class="container-fluid">
