@@ -28,9 +28,9 @@
         <h1 id="reply-title" class="display-<?php if ($this->commentsNum > 0): ?>6<?php else: ?>5<?php endif; ?>">发表评论 <small><?php $comments->cancelReply(); ?></small></h1>
         <form method="post" action="<?php $this->commentUrl() ?>" id="commentform">
         <?php if($this->user->hasLogin()): ?>
-            <p>以<a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>的身份登录。<a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('登出？'); ?></a></p>
+            <p>以<a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>发言。<a href="<?php $this->options->logoutUrl(); ?>" class="text-danger btn btn-sm">退出登录</a></p>
         <?php else: ?>
-            <p class="comment-notes">无需登录，电子邮件地址不会被公开。<span class="required">*</span>为必填。</p>							
+            <p class="comment-notes">无需登录，电子邮件地址不会被公开。<span class="required">*</span>为必填。</p>	
             <div class="input-group mb-3">
                 <span class="input-group-text border-warning">姓名 <span class="required">*</span></span>
                 <input id="author" name="author" type="text" class="form-control border-warning" placeholder="Author" value="<?php $this->remember('author'); ?>" aria-required="true" aria-label="Author" required>
@@ -48,9 +48,7 @@
                 <span class="input-group-text border-warning">评论<span class="required">*</span></span>
                 <textarea rows="6" class="form-control border-warning" id="comment" name="text" aria-label="评论" required><?php echo $this->remember('text'); ?></textarea>
             </div>
-            <p class="form-submit">
-                <input class="btn btn-outline-primary w-100" name="submit" type="submit" id="submit" value="提交">
-            </p>
+            <input class="form-submit btn btn-outline-primary w-100" name="submit" type="submit" id="submit" value="提交">
         </form>
     </div>
 <?php else: ?>
