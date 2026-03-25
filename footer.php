@@ -17,5 +17,28 @@
 <!-- 开始使用cdnjs提供Bootstrap JavaScript文件 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- 结束使用cdnjs提供Bootstrap JavaScript文件 -->
+
+<!-- 开始LaTeX渲染设置 -->
+<?php if ($this->is('post') && $this->fields->isLatex == 1): ?>
+<script type = "text/javascript" >
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [{
+          left: "$$",
+          right: "$$",
+          display: true
+      }, {
+          left: "$",
+          right: "$",
+          display: false
+      }],
+      ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+      ignoredClasses: ["nokatex"]
+    });
+  });
+</script>
+<?php endif; ?>
+<!-- 结束LaTeX渲染设置 -->
+
 </body>
 </html>

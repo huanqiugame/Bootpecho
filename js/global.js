@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //// 为媒体元素添加fluid和rounded类
     // 获取页面中所有的img和video元素
     const mediaElements = document.querySelectorAll('img, video');
+    const tableElements = document.querySelectorAll('table');
 
     // 遍历每个media元素
     mediaElements.forEach(media => {
@@ -13,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // 检查是否已经存在.rounded类，如果不存在则添加
         if (!media.classList.contains('rounded')) {
             media.classList.add('rounded');
+        }
+    });
+    tableElements.forEach(table => {
+        // 检查是否已经存在.table类，如果不存在则添加
+        if (!table.classList.contains('table')) {
+            table.classList.add('table');
         }
     });
 
