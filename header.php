@@ -31,7 +31,7 @@
 <body class="container-xl mt-3 mb-5">
 
 <!-- 文章限制容器 -->
-<?php if (!$this->is('post') || $this->is('page')): ?>
+<?php if (!$this->is('post') && !$this->is('page')): ?>
     <div id="front" class="m-auto">
 <?php else: ?>
     <div id="post" class="m-auto">

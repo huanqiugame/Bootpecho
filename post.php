@@ -84,7 +84,6 @@
     <?php $this->need('comments.php'); ?>
     </div>
 </div>
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/content.js'); ?>"></script>
 
     <?php $this->need('sidebar.php'); ?>
     <?php $this->need('footer.php'); ?>

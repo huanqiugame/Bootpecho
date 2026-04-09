@@ -116,8 +116,6 @@
             'itemTag' => 'li',
             'currentClass' => 'active '
         ]); ?>
-        <script type="text/javascript" src="<?php $this->options->themeUrl('js/pagination.js'); ?>"></script>
-        <script type="text/javascript" src="<?php $this->options->themeUrl('js/not_found.js'); ?>"></script>
     </div><!-- #content -->
 </div><!-- #primary -->
 

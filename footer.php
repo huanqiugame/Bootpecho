@@ -10,7 +10,13 @@
         </div><!-- .site-info -->
     </footer><!-- #colophon -->
 </div>
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/global.js'); ?>"></script>
+
+<?php if ($this->is('post') || $this->is('page')): ?>
+    <script type="text/javascript" src="<?php $this->options->themeUrl('js/page.js'); ?>"></script>
+<?php endif; ?>
+<?php if (!$this->is('post') && !$this->is('page')): ?> <!-- 如果是front的话 -->
+    <script type="text/javascript" src="<?php $this->options->themeUrl('js/front.js'); ?>"></script>
+<?php endif; ?>
 <script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme_p2.js'); ?>"></script>
 <?php $this->footer(); ?>
 
@@ -20,7 +26,7 @@
 
 <!-- 开始LaTeX渲染设置 -->
 <?php if ($this->is('post') && $this->fields->isLatex == 1): ?>
-<script type = "text/javascript" >
+<script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
     renderMathInElement(document.body, {
       delimiters: [{
