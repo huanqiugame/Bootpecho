@@ -61,13 +61,13 @@
         </nav>
     </header><!-- #masthead -->
     <?php if (!$this->is('index')): ?>
-    <div class="crumbs_patch my-2">
+    <div class="crumbs_patch">
         <a href="<?php $this->options->siteUrl(); ?>">首页</a>
             &raquo;
     <?php endif; ?>
 
         <?php if ($this->is('post')): ?><!-- 页面为文章单页时 -->
-            <?php $this->category(); ?> &raquo; <?php $this->title() ?>
+            <?php $this->category(); ?> &raquo;
         <?php elseif ($this->is('author')): ?>
             Author &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
         <?php elseif ($this->is('category')): ?>

@@ -100,10 +100,21 @@ img, video {
 #post {
     max-width: 1000px;
 }
-
 #front {
     max-width: 1000px;
 }
+
+.crumbs_patch {
+    color: rgba(var(--bs-body-color-rgb), 60%);
+}
+.crumbs_patch a {
+    color: rgba(var(--bs-body-color-rgb), 80%);
+    text-decoration: none;
+}
+.crumbs_patch {
+    margin-top: 0.5rem;
+}
+
 
 /* post.php and page.php specific */
 .comment-list {
@@ -150,6 +161,17 @@ img, video {
     color: #BE3536;
     font-weight: bold;
 }
+
+.post-properties-container {
+    display: flex;
+    flex-wrap: wrap;
+    color: rgba(var(--bs-body-color-rgb), 80%);
+}
+.post-properties-container > * {
+    flex-shrink: 0;
+    margin: 0.2rem 0;
+}
+
 /** TOC **/
 .toc-container {
     max-width: 300px;
@@ -169,7 +191,15 @@ img, video {
     margin-left: 0 !important;
     margin-top: 1rem;
 }
-
+#post-toc:has(ul:empty) {
+    display: none;
+}
+.post-content-info-hr {
+    margin: 1rem 0;
+}
+.post-tags > p:last-child {
+    margin-bottom: 0;
+}
 
 /* index.php specific */
 
