@@ -25,14 +25,14 @@ function themeFields($layout) {
 	0 => _t('目录随滚动浮动在正文右侧（如果宽度足够）')),
 	0, _t('目录是否固定'), _t('默认浮动。对于简洁的文章，请选择固定在文章开头。'));
     $layout->addItem($tocNoFloat);
+
     // $articleContainerStyle 用于 Post 和 Page 中
     $articleContainerStyle = new Typecho_Widget_Helper_Form_Element_Text('articleContainerStyle', NULL, NULL, _t('文章主体容器额外样式'), _t('不包括文章标题、信息、目录和页脚，纯粹正文部分的容器样式。直接填入style=""的CSS样式。'));
     $layout->addItem($articleContainerStyle);
+
     // $articleContainerStyle 用于 Post 和 Page 中
     $bodyContainerStyle = new Typecho_Widget_Helper_Form_Element_Text('bodyContainerStyle', NULL, NULL, _t('文章全页面容器额外样式'), _t('包括从顶部导航栏到底部页脚的容器样式。直接填入style=""的CSS样式。'));
     $layout->addItem($bodyContainerStyle);
-
-    
 
     // $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点LOGO地址'), _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO'));
     // $layout->addItem($logoUrl);

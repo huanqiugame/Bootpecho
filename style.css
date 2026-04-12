@@ -264,7 +264,10 @@ img, video {
 .post-tags > p {
     padding-block-start: 0.5rem;
 }
-.toc-only-container:has(>div#post-toc>ul:empty) {
+/* .toc-only-container:has(>div#post-toc>ul:empty) {
+    display: none;
+} */
+.toc-only-container {
     display: none;
 }
 #post-toc {

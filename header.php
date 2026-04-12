@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" lang="zh-CN" prefix="og: http://ogp.me/ns#">
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" lang="zh-CN" prefix="og: http://ogp.me/ns#">
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html lang="zh-CN" style="display:block;" data-bs-theme="light">
-<!--<![endif]-->
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,5 +44,5 @@
                 <button class="btn ms-auto border-1 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#bs_sidebar" aria-controls="sidebar"><span class="navbar-toggler-icon"></span></button>
             </div>
         </nav>
-    </header><!-- #masthead -->
+    </header>
 

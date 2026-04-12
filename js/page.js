@@ -172,7 +172,9 @@ function generate_table_of_contents() {
         // 不使用debounce：
         window.addEventListener('scroll', highlightCurrentHeading);
     }
+
     highlightCurrentHeading();  // 初始化高亮
+    document.getElementsByClassName('toc-only-container')[0].style.display = 'block';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
