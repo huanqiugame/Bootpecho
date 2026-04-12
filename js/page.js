@@ -109,46 +109,70 @@ function generate_table_of_contents() {
         var id = 'heading-' + index;
         heading.id = id;
 
-        var li = document.createElement('li');
+        // var li = document.createElement('li');
         var a = document.createElement('a');
         a.href = '#' + id;
         a.textContent = heading.textContent;
-        li.appendChild(a);
+        // li.appendChild(a);
 
         var level = parseInt(heading.tagName.substring(1));
-        li.style.marginLeft = (level - minLevel) * 1.5 + 'rem';  // 根据标题级别设置缩进
-        tocList.appendChild(li);
+        a.style.marginLeft = (level - minLevel) * 1.5 + 'rem';  // 根据标题级别设置缩进
+        tocList.appendChild(a);
     });
 
     // 高亮显示当前的目录项
-    // function highlightCurrentHeading() {
-    //     let currentHeadingId = null;
-    //     const offset = 100;  // 滚动时的偏移量
+    function highlightCurrentHeading() {
+        // 视口小于992px（和CSS保持一致），不高亮目录
+        if (window.innerWidth < 992) {
+            return;
+        }
 
-    //     // 查找当前视口中的标题
-    //     for (let i = 0; i < headings.length; i++) {
-    //         const rect = headings[i].getBoundingClientRect();
-    //         if (rect.top <= offset) {
-    //             currentHeadingId = headings[i].id;
-    //         } else {
-    //             break;
-    //         }
-    //     }
+        let currentHeadingId = null;
+        const offset = 10;  // 滚动时的偏移量
 
-    //     // 高亮当前标题的目录项
-    //     tocList.querySelectorAll('a').forEach(function (a) {
-    //         if (a.getAttribute('href').substring(1) === currentHeadingId) {
-    //             a.classList.add('active');
-    //         } else {
-    //             a.classList.remove('active');
-    //             a.style.backgroundColor = '';
-    //         }
-    //     });
+        // 查找当前视口中的标题
+        for (let i = 0; i < headings.length; i++) {
+            const rect = headings[i].getBoundingClientRect();
+            if (rect.top <= offset) {
+                currentHeadingId = headings[i].id;
+            } else {
+                break;
+            }
+        }
+
+        // 高亮当前标题的目录项
+        tocList.querySelectorAll('a').forEach(function (a) {
+            if (a.getAttribute('href').substring(1) === currentHeadingId) {
+                a.classList.add('active');
+            } else {
+                a.classList.remove('active');
+            }
+        });
+    }
+
+    // 创建一个防抖函数，在滚动停止时执行预定函数
+    // function debounce(func, wait) {
+    //     let timeout;
+    //     return function executedFunction(...args) {
+    //         const later = () => {
+    //             clearTimeout(timeout);
+    //             func(...args);
+    //         };
+    //         clearTimeout(timeout);
+    //         timeout = setTimeout(later, wait);
+    //     };
     // }
 
     // 监听滚动事件以更新当前高亮的目录项
-    // window.addEventListener('scroll', highlightCurrentHeading);
-    // highlightCurrentHeading();  // 初始化高亮
+    if (!document.getElementById('content_sidebar').classList.contains('toc-container-no-float')) {
+        // 使用debounce：
+        // const debouncedHighlight = debounce(highlightCurrentHeading, 100);
+        // window.addEventListener('scroll', debouncedHighlight);
+
+        // 不使用debounce：
+        window.addEventListener('scroll', highlightCurrentHeading);
+    }
+    highlightCurrentHeading();  // 初始化高亮
 }
 
 document.addEventListener('DOMContentLoaded', function () {

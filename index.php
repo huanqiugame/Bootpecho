@@ -15,6 +15,9 @@
  $this->need('header.php');
 ?>
 
+<!-- 文章限制容器 -->
+<div id="front" class="m-auto">
+
 <div id="primary">
     <div id="content" role="main">
         <hgroup class="px-2">
@@ -118,6 +121,8 @@
         ]); ?>
     </div><!-- #content -->
 </div><!-- #primary -->
+
+</div><!-- id="front" -->
 
 <?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

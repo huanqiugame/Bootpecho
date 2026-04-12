@@ -1,8 +1,25 @@
 <?php $this->need('header.php'); ?>
+<!-- 文章限制容器 -->
+<div id="main">
+    <div id="post" class="m-auto">
+
+<div class="crumbs_patch">
+    <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+        &raquo;
+        <?php $this->category(); ?>
+        &raquo;
+</div>
+
 <div id="primary" class="site-content">
-    <div id="content" role="main">			
-    <article>
-        <header>
+    <div role="main">			
+    <article id="article-container" style="
+            <?php 
+                if ($this->fields->tocNoFloat == 1) {
+                    echo "display: block;";
+                }
+            ?>
+            ">
+        <header class="entry-header">
             <h1 class="card-title mb-3 display-5">
                 <?php $this->title() ?>
             </h1>
@@ -18,56 +35,55 @@
                 <span title="<?php $this->date('G:i') ?>" rel="bookmark" class="ms-2 me-3">
                     <time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日 H:i'); ?></time>
                 </span>
-            <span class="ms-1">
-                <?php Postviews($this); ?>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book align-middle" viewBox="0 0 16 16">
-                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-                </svg>
-            </span>
-            <!-- <div class="comments-link">
-                <a href="<?php $this->permalink() ?>#comments" title="<?php $this->title() ?> 上的评论">
-                    <?php $this->commentsNum('暂无回复', '沙发被抢', '%d 条回复'); ?>
-                </a>
-            </div> -->
+                <span class="ms-1">
+                    <?php Postviews($this); ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book align-middle" viewBox="0 0 16 16">
+                        <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                    </svg>
+                </span>
+                <!-- <div class="comments-link">
+                    <a href="<?php $this->permalink() ?>#comments" title="<?php $this->title() ?> 上的评论">
+                        <?php $this->commentsNum('暂无回复', '沙发被抢', '%d 条回复'); ?>
+                    </a>
+                </div> -->
             </div>
-            
         </header>
-        <br />
-        <div style="
+        <div class="toc-container
                 <?php 
-                $containerStyle = $this->fields->containerStyle;
-                if (isset($containerStyle)) {
-                    echo $containerStyle;
-                }
-                ?>
-            " class="
-                <?php 
-                $containerClass = $this->fields->containerClass;
-                if (isset($containerClass)) {
-                    echo $containerClass;
-                }
-                ?>
-            ">
-            <div class="mb-3 ms-3 float-end p-3 toc-container border-start
-                <?php 
-                $tocNoFloat = $this->fields->tocNoFloat;
-                if (isset($tocNoFloat)) {
-                    echo "toc-container-no-float border rounded-4";
+                if ($this->fields->tocNoFloat == 1) {
+                    echo "toc-container-no-float";
                 }
                 ?>
             " id="content_sidebar">
-                <div id="post-toc" class="post-toc">
-                    <strong>文章目录</strong>
-                    <ul></ul>
-                    <!-- ul 里面不要有空格 -->
-                    <hr class="post-content-info-hr" />
-                </div>
-                <div class="post-tags">
-                    <strong>文章标签</strong>
-                    <p><?php $this->tags('、', true, '无'); ?></p>
+            <div class="post-tags">
+                <strong>文章标签</strong>
+                <p><?php $this->tags('、', true, '无'); ?></p>
+            </div>
+            <div class="toc-only-container">
+                <hr class="post-content-info-hr" />
+                <div id="post-toc" style="
+                    <?php 
+                        if ($this->fields->tocNoFloat == 1) {
+                            echo "max-height: 100%;";
+                        }
+                    ?>
+                ">
+                    <strong class="post-sidebar-title">文章目录</strong>
+                    <button class="btn post-toc-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#post-toc-content" aria-expanded="true" aria-controls="post-toc-content">展开/收起</button>
+                    <ul id="post-toc-content" class="collapse show"></ul>
+                    <!-- ul 里面不要有内容 -->
                 </div>
             </div>
-            <div class="entry-content mt-2">
+        </div>
+        <div style="
+                <?php 
+                $articleContainerStyle = $this->fields->articleContainerStyle;
+                if (isset($articleContainerStyle)) {
+                    echo $articleContainerStyle;
+                }
+                ?>
+            " class="content-container">
+            <div class="entry-content mt-3">
                 <?php $this->content() ?>
             </div>
         </div>
@@ -82,6 +98,9 @@
     <?php $this->need('comments.php'); ?>
     </div>
 </div>
+
+    </div><!-- id="post" -->
+</div><!-- #main .wrapper -->
 
     <?php $this->need('sidebar.php'); ?>
     <?php $this->need('footer.php'); ?>

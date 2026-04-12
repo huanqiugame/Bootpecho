@@ -12,32 +12,10 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><?php $this->archiveTitle(' &raquo; ', '', ' - '); ?><?php $this->options->title(); ?></title>
-<!-- 使用url函数转换相关路径 -->
-<!--[if lt IE 9]>
-<script src="<?php $this->options->themeUrl('js/html5.js'); ?>" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" media="all" href="<?php $this->options->themeUrl('ie.css'); ?>" />
-<![endif]-->
 
 <!-- 开始使用cdnjs提供的Bootstrap CSS文件 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- 结束使用cdnjs提供的Bootstrap CSS文件 -->
-
-<link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('style.css'); ?>">
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
-
-<!-- 通过自有函数输出HTML头部信息 -->
-<?php $this->header(); ?>
-</head>
-<body class="container-xl mt-3 mb-5">
-
-<!-- 文章限制容器 -->
-<?php if (!$this->is('post') && !$this->is('page')): ?>
-    <div id="front" class="m-auto">
-<?php else: ?>
-    <div id="post" class="m-auto">
-<?php endif; ?>
-
-
 <!-- LaTeX 渲染 -->
 <?php if ($this->is('post') && $this->fields->isLatex == 1): ?>
 <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -49,6 +27,21 @@
 <?php endif; ?>
 <!-- LaTeX 渲染结束 -->
 
+
+<link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('style.css'); ?>">
+<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
+
+<!-- 通过自有函数输出HTML头部信息 -->
+<?php $this->header(); ?>
+</head>
+<body class="container-xl mt-3 mb-5" style="
+    <?php 
+        $bodyContainerStyle = $this->fields->bodyContainerStyle;
+        if (isset($bodyContainerStyle)) {
+            echo $bodyContainerStyle;
+        }
+    ?>
+    ">
     <header id="masthead" class="site-header" role="banner">
         <nav class="navbar navbar-expand bg-body-tertiary mb-3">
             <div class="container-fluid">
@@ -60,31 +53,4 @@
             </div>
         </nav>
     </header><!-- #masthead -->
-    <?php if (!$this->is('index')): ?>
-    <div class="crumbs_patch">
-        <a href="<?php $this->options->siteUrl(); ?>">首页</a>
-            &raquo;
-    <?php endif; ?>
-
-        <?php if ($this->is('post')): ?><!-- 页面为文章单页时 -->
-            <?php $this->category(); ?> &raquo;
-        <?php elseif ($this->is('author')): ?>
-            Author &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
-        <?php elseif ($this->is('category')): ?>
-            Category &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
-        <?php elseif ($this->is('tag')): ?>
-            Tag &raquo; <?php $this->archiveTitle(' &raquo; ','',''); ?>
-        <?php elseif ($this->is('date')): ?>
-            <?php $this->date('Y'); ?> &raquo; <?php $this->date('m'); ?>
-        <?php else: ?><!-- 页面为其他页时 -->
-            <?php $this->archiveTitle(' &raquo; ','',''); ?>
-        <?php endif; ?>
-
-    <?php if (!$this->is('index')): ?>
-    </div>
-    <?php endif; ?>
-
-
-    <div id="main">
-
 

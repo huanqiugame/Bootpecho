@@ -1,15 +1,14 @@
-        </div><!-- #main .wrapper -->
-    <footer id="colophon" role="contentinfo">
-        <hr />
-        <div class="site-info" style="color: gray;">
-            <div role="group" class="mb-2">
-                <a class="me-3 footer-link" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章RSS'); ?></a>
-                <a class="footer-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论RSS'); ?></a>
-            </div>
-            <span>本网站使用<a class="footer-link" href="http://www.typecho.org">Typecho</a>管理与生成，使用<a class="footer-link" href="http://getbootstrap.com">Bootstrap 5</a>作为前端框架。请前往<a class="footer-link" href="https://github.com/huanqiugame/Bootpecho">GitHub查看主题Bootpecho源码</a>。</span>
-        </div><!-- .site-info -->
-    </footer><!-- #colophon -->
-</div>
+<footer id="colophon" role="contentinfo">
+    <hr />
+    <div class="site-info" style="color: gray;">
+        <div role="group" class="mb-2">
+            <a class="me-3 footer-link" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章RSS'); ?></a>
+            <a class="footer-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论RSS'); ?></a>
+        </div>
+        <span>本网站使用<a class="footer-link" href="http://www.typecho.org">Typecho</a>管理与生成，使用<a class="footer-link" href="http://getbootstrap.com">Bootstrap 5</a>作为前端框架。请前往<a class="footer-link" href="https://github.com/huanqiugame/Bootpecho">GitHub查看主题Bootpecho源码</a>。</span>
+    </div>
+</footer>
+
 
 <?php if ($this->is('post') || $this->is('page')): ?>
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/page.js'); ?>"></script>
