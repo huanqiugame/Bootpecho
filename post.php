@@ -61,7 +61,6 @@
                 <p><?php $this->tags('、', true, '无'); ?></p>
             </div>
             <div class="toc-only-container">
-                <hr class="post-content-info-hr" />
                 <div id="post-toc" style="
                     <?php 
                         if ($this->fields->tocNoFloat == 1) {
@@ -84,7 +83,7 @@
                 }
                 ?>
             " class="content-container">
-            <div class="entry-content mt-3">
+            <div class="entry-content">
                 <?php $this->content() ?>
             </div>
         </div>

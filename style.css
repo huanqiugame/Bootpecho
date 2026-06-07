@@ -113,9 +113,10 @@ img, video {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
-    "header"
-    "table_of_content"
-    "post";
+        "header"
+        "table_of_content"
+        "post";
+    row-gap: 1rem;
 }
 
 @media (min-width: 993px) { /* 如需修改，同步修改 page.js */
@@ -268,6 +269,7 @@ img, video {
     display: none;
 } */
 .toc-only-container {
+    margin-top: 1rem;
     display: none;
 }
 #post-toc {
@@ -315,9 +317,6 @@ img, video {
     padding: 0.2rem;
     grid-area: toggle;
 }
-.post-content-info-hr {
-    margin: 1rem 0;
-}
 .post-tags > p:last-child {
     margin-bottom: 0;
 }
@@ -343,9 +342,9 @@ img, video {
         grid-template-columns: 1fr 1fr;
     }
 }
-@media (max-width: 992px) and (min-width: 500px) {
+@media (max-width: 1200px) and (min-width: 500px) {
     body {
-        max-width: calc(100vw - (100vw - 500px) * 0.2);
+        max-width: calc(100vw - (100vw - 500px) * 0.087);
     }
 }
 
