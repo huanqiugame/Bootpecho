@@ -104,9 +104,27 @@ img, video {
 
 /* Code below only works for specific Typecho themes */
 /* Site wide style */
-.footer-link {
+#colophon {
+    margin-top: 2.5rem;
+}
+#colophon hr {
+    border-color: rgba(var(--bs-body-color-rgb), 12%);
+    opacity: 1;
+}
+.site-info {
+    padding-block: 0.5rem 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: rgba(var(--bs-body-color-rgb), 55%);
+    text-align: center;
+}
+.site-info a.footer-link {
     text-decoration: none;
-    color: rgba(var(--bs-link-color-rgb), 75%);
+    color: rgba(var(--bs-body-color-rgb), 72%);
+}
+.site-info a.footer-link:hover {
+    color: rgba(var(--bs-body-color-rgb), 100%);
+    text-underline-offset: 0.2rem;
 }
 
 #article-container {

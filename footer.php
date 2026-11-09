@@ -1,6 +1,6 @@
 <footer id="colophon" role="contentinfo">
     <hr />
-    <div class="site-info" style="color: gray;">
+    <div class="site-info">
         <div role="group" class="mb-2">
             <a class="me-3 footer-link" href="<?php $this->options->feedUrl(); ?>"><?php bp_e('footer.posts_rss'); ?></a>
             <a class="footer-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php bp_e('footer.comments_rss'); ?></a>
