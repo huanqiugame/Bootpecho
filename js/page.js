@@ -74,7 +74,8 @@ function generate_table_of_contents() {
 
     // 如果没有找到文章内容容器，则输出错误信息
     if (!content) {
-        console.error("无法找到文章内容容器。请检查类名或添加新的选择器。");
+        const i18n = window.BootpechoI18n || {};
+        console.error(i18n.tocMissing || "无法找到文章内容容器。请检查类名或添加新的选择器。");
         return;
     }
 

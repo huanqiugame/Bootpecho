@@ -5,7 +5,7 @@
     <div id="post" class="m-auto">
 
 <div class="crumbs_patch">
-    <a href="<?php $this->options->siteUrl(); ?>">首页</a>
+    <a href="<?php $this->options->index(); ?>"><?php bp_e('nav.home'); ?></a>
         &raquo;
         <?php $this->category(); ?>
         &raquo;
@@ -26,7 +26,7 @@
             </h1>
             <div class="post-properties-container">
                 <span class="me-2">
-                    <a href="<?php $this->author->permalink(); ?>" title="查看所有由 <?php $this->author(); ?> 发布的文章" rel="author" class="btn btn-sm rounded-pill" style="background-color: var(--bs-body-bg); border-color: var(--bs-border-color); border-width: 0px; box-shadow: 0px 0px 50px rgba(var(--bs-body-color-rgb), 10%); display: inline-flex; align-items: center; color: gray;">
+                    <a href="<?php $this->author->permalink(); ?>" title="<?php ob_start(); $this->author(); bp_e('post.author_posts', ob_get_clean()); ?>" rel="author" class="btn btn-sm rounded-pill" style="background-color: var(--bs-body-bg); border-color: var(--bs-border-color); border-width: 0px; box-shadow: 0px 0px 50px rgba(var(--bs-body-color-rgb), 10%); display: inline-flex; align-items: center; color: gray;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil me-1" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                     </svg>
@@ -34,7 +34,7 @@
                     </a>
                 </span>
                 <span title="<?php $this->date('G:i') ?>" rel="bookmark" class="ms-2 me-3">
-                    <time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日 H:i'); ?></time>
+                    <time class="entry-date" datetime="<?php $this->date('c'); ?>"><?php $this->date(bp_t('date.post')); ?></time>
                 </span>
                 <span class="ms-1">
                     <?php Postviews($this); ?>
@@ -57,8 +57,8 @@
                 ?>
             " id="content_sidebar">
             <div class="post-tags">
-                <strong>文章标签</strong>
-                <p><?php $this->tags('、', true, '无'); ?></p>
+                <strong><?php bp_e('post.tags'); ?></strong>
+                <p><?php $this->tags(bp_t('post.tags_separator'), true, bp_t('post.tags_empty')); ?></p>
             </div>
             <div class="toc-only-container">
                 <hr class="post-content-info-hr" />
@@ -69,8 +69,8 @@
                         }
                     ?>
                 ">
-                    <strong class="post-sidebar-title">文章目录</strong>
-                    <button class="btn post-toc-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#post-toc-content" aria-expanded="true" aria-controls="post-toc-content">展开/收起</button>
+                    <strong class="post-sidebar-title"><?php bp_e('post.toc'); ?></strong>
+                    <button class="btn post-toc-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#post-toc-content" aria-expanded="true" aria-controls="post-toc-content"><?php bp_e('post.toc_toggle'); ?></button>
                     <ul id="post-toc-content" class="collapse show"></ul>
                     <!-- ul 里面不要有内容 -->
                 </div>
@@ -90,7 +90,7 @@
         </div>
     </article>
     <!-- <nav class="nav-single">
-        <h1 class="assistive-text">文章导航</h1>
+        <h1 class="assistive-text"><?php bp_e('post.nav'); ?></h1>
         <span class="prev"><?php $this->theNext(); ?></span>
         <span class="next"><?php $this->thePrev(); ?></span>
     </nav> -->

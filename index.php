@@ -26,15 +26,15 @@
                 <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                 <?php endif; ?>
                 <?php if ($this->is('category')): ?>
-                    “<?php $this->archiveTitle("", "", ""); ?>”分类
+                    <?php bp_e('index.category', (string)$this->getArchiveTitle()); ?>
                 <?php elseif ($this->is('tag')): ?>
-                    “<?php $this->archiveTitle("", "", ""); ?>”标签
+                    <?php bp_e('index.tag', (string)$this->getArchiveTitle()); ?>
                 <?php elseif ($this->is('author')): ?>
-                    “<?php $this->archiveTitle("", "", ""); ?>”的作品
+                    <?php bp_e('index.author', (string)$this->getArchiveTitle()); ?>
                 <?php elseif ($this->is('date')): ?>
                     <?php $this->archiveTitle("", "", "");?>
                 <?php elseif ($this->is('search')): ?>
-                    “<?php $this->archiveTitle("", "", ""); ?>”的搜索结果
+                    <?php bp_e('index.search', (string)$this->getArchiveTitle()); ?>
                 <?php else: ?>
                     <?php $this->options->title() ?>
                 <?php endif; ?>
@@ -47,10 +47,10 @@
         <!-- 如果搜索结果不存在时，显示搜索框。 -->
         <?php if (!$this->have()): ?>
             <hr />
-            <p>你可以尝试使用其他关键词再次搜索。</p>
-            <form class="input-group mb-3" role="search" id="searchform" method="post" action="<?php $this->options->siteUrl(); ?>">
-                <input type="text" class="form-control text" placeholder="搜索标题、内容、时间、作者及更多" aria-label="Search" name="s" id="s" value="<?php $this->archiveTitle("", "", ""); ?>">
-                <input class="btn btn-primary" type="submit" id="searchsubmit" value="搜索">
+            <p><?php bp_e('search.empty_hint'); ?></p>
+            <form class="input-group mb-3" role="search" id="searchform" method="post" action="<?php $this->options->index(); ?>">
+                <input type="text" class="form-control text" placeholder="<?php bp_e('search.placeholder'); ?>" aria-label="<?php bp_e('search.submit'); ?>" name="s" id="s" value="<?php $this->archiveTitle("", "", ""); ?>">
+                <input class="btn btn-primary" type="submit" id="searchsubmit" value="<?php bp_e('search.submit'); ?>">
             </form>
         <?php else: ?>
             <!-- <hr class="mb-0" /> -->
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="article-tile-date">
-                                    <time datetime="<?php $this->date('c'); ?>"><?php $this->date('Y年n月j日'); ?></time>
+                                    <time datetime="<?php $this->date('c'); ?>"><?php $this->date(bp_t('date.post_short')); ?></time>
                                 </div>
                             </a>
                             <div class="article-tile-property">
@@ -112,7 +112,7 @@
                 </article>
             <?php endwhile; ?>
         </div>
-        <?php $this->pageNav('前一页', '后一页', 3, '...', [
+        <?php $this->pageNav(bp_t('index.prev_page'), bp_t('index.next_page'), 3, '...', [
             'textTag' => 'span',
             'prevClass' => '',
             'nextClass' => '',

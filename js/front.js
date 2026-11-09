@@ -34,7 +34,8 @@ function add_search_fail_message() {
     if (!article) {
         const hgroup = document.querySelector('hgroup');
         const message = document.createElement('p');
-        message.textContent = '抱歉，没有找到文章内容。';
+        const i18n = window.BootpechoI18n || {};
+        message.textContent = i18n.noResults || '抱歉，没有找到文章内容。';
         hgroup.appendChild(message);
     }
 }

@@ -2,10 +2,15 @@
     <hr />
     <div class="site-info" style="color: gray;">
         <div role="group" class="mb-2">
-            <a class="me-3 footer-link" href="<?php $this->options->feedUrl(); ?>"><?php _e('文章RSS'); ?></a>
-            <a class="footer-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php _e('评论RSS'); ?></a>
+            <a class="me-3 footer-link" href="<?php $this->options->feedUrl(); ?>"><?php bp_e('footer.posts_rss'); ?></a>
+            <a class="footer-link" href="<?php $this->options->commentsFeedUrl(); ?>"><?php bp_e('footer.comments_rss'); ?></a>
         </div>
-        <span>本网站使用<a class="footer-link" href="http://www.typecho.org">Typecho</a>管理与生成，使用<a class="footer-link" href="http://getbootstrap.com">Bootstrap 5</a>作为前端框架。请前往<a class="footer-link" href="https://github.com/huanqiugame/Bootpecho">GitHub查看主题Bootpecho源码</a>。</span>
+        <span><?php bp_e(
+            'footer.site_info',
+            '<a class="footer-link" href="http://www.typecho.org">Typecho</a>',
+            '<a class="footer-link" href="http://getbootstrap.com">Bootstrap 5</a>',
+            '<a class="footer-link" href="https://github.com/huanqiugame/Bootpecho">' . bp_t('footer.theme_link') . '</a>'
+        ); ?></span>
     </div>
 </footer>
 
@@ -16,6 +21,12 @@
 <?php if (!$this->is('post') && !$this->is('page')): ?> <!-- 如果是front的话 -->
     <script type="text/javascript" src="<?php $this->options->themeUrl('js/front.js'); ?>"></script>
 <?php endif; ?>
+<script type="text/javascript">
+window.BootpechoI18n = <?php echo json_encode([
+    'noResults' => bp_t('search.no_results'),
+    'tocMissing' => bp_t('js.toc_missing'),
+], JSON_UNESCAPED_UNICODE); ?>;
+</script>
 <script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme_p2.js'); ?>"></script>
 <?php $this->footer(); ?>
 

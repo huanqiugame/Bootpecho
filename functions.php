@@ -1,4 +1,85 @@
 <?php
+/**
+ * MultiLanguage 插件是否已启用。
+ */
+function bootpecho_multilang_available() {
+    if (!class_exists('\TypechoPlugin\MultiLanguage\Plugin')) {
+        return false;
+    }
+
+    if (class_exists('\Typecho\Plugin') && !\Typecho\Plugin::exists('MultiLanguage')) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * 当前语言代码；未启用 MultiLanguage 插件时回退到中文。
+ */
+function bootpecho_lang() {
+    if (bootpecho_multilang_available()) {
+        return strtolower(\TypechoPlugin\MultiLanguage\Plugin::currentLang());
+    }
+
+    return 'zh-cn';
+}
+
+/**
+ * 是否使用中文界面。
+ */
+function bootpecho_is_zh() {
+    return strpos(bootpecho_lang(), 'zh') === 0;
+}
+
+/**
+ * 载入当前语言的主题文案表；缺失的语言回退到英文。
+ *
+ * @return array<string, string>
+ */
+function bootpecho_translations() {
+    static $translations = null;
+
+    if ($translations !== null) {
+        return $translations;
+    }
+
+    $language = bootpecho_lang();
+    $file = __DIR__ . '/lang/' . $language . '.php';
+
+    if (!is_file($file)) {
+        $file = __DIR__ . '/lang/' . (bootpecho_is_zh() ? 'zh-cn' : 'en') . '.php';
+    }
+
+    $translations = is_file($file) ? require $file : [];
+
+    return $translations;
+}
+
+/**
+ * 按翻译键读取主题文案，支持 sprintf 占位符。
+ *
+ * @param string $key 翻译键
+ * @param mixed ...$args 占位符参数
+ * @return string
+ */
+function bp_t($key, ...$args) {
+    $translations = bootpecho_translations();
+    $text = isset($translations[$key]) ? $translations[$key] : $key;
+
+    return $args ? vsprintf($text, $args) : $text;
+}
+
+/**
+ * 输出指定翻译键的主题文案。
+ *
+ * @param string $key 翻译键
+ * @param mixed ...$args 占位符参数
+ */
+function bp_e($key, ...$args) {
+    echo bp_t($key, ...$args);
+}
+
 function themeConfig($form) {
     $logoUrl = new Typecho_Widget_Helper_Form_Element_Text('logoUrl', NULL, NULL, _t('站点LOGO地址'), _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO'));
     $form->addInput($logoUrl);
@@ -70,7 +151,7 @@ echo $commentClass;
                 </span>
                 <small href="<?php $comments->permalink(); ?>">
                 	<time datetime="<?php $comments->date('c'); ?>">
-                    	<?php $comments->date('Y年m月d日G:i'); ?>
+                    <?php $comments->date(bp_t('date.comment')); ?>
                     </time>
                 </small>
             </header>
@@ -79,7 +160,7 @@ echo $commentClass;
             </section>
 			<div class="reply badge" style="font-size: 105%;">
 				<?php 
-					$comments->reply('回复'); 
+					$comments->reply(bp_t('comments.reply'));
 					_e('<span>↓</span>');
 				?>
                 
@@ -124,7 +205,7 @@ function formatPostDate($post) {
         if (date('mj', $currentDate) == $post->date('mj')) {
             return 'H:i';
         } else {
-            return 'm月j日H:i';
+            return bp_t('date.month_day_time');
         }
     } else {
     }

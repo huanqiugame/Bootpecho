@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" style="display:block;" data-bs-theme="light">
+<html lang="<?php echo htmlspecialchars(bootpecho_lang(), ENT_QUOTES, 'UTF-8'); ?>" style="display:block;" data-bs-theme="light">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,11 +37,11 @@
     <header id="masthead" class="site-header" role="banner">
         <nav class="navbar navbar-expand bg-body-tertiary mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><?php $this->options->title() ?></a>
+                <a class="navbar-brand" href="<?php $this->options->index(); ?>"><?php $this->options->title() ?></a>
                 <div class="navbar-nav me-auto">
-                    <!-- <a class="nav-link" href="/about">关于</a> -->
+                    <!-- <a class="nav-link" href="/about"><?php bp_e('nav.about'); ?></a> -->
                 </div>
-                <button class="btn ms-auto border-1 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#bs_sidebar" aria-controls="sidebar"><span class="navbar-toggler-icon"></span></button>
+                <button class="btn border-1 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#bs_sidebar" aria-controls="sidebar" aria-label="<?php bp_e('nav.open_sidebar'); ?>"><span class="navbar-toggler-icon"></span></button>
             </div>
         </nav>
     </header>
