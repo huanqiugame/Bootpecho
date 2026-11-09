@@ -12,6 +12,7 @@ return [
     'nav.open_sidebar' => 'Open sidebar',
 
     'search.placeholder' => 'Search titles, content, dates, authors and more',
+    'search.placeholder_short' => 'Search…',
     'search.submit' => 'Search',
     'search.empty_hint' => 'Try searching with different keywords.',
     'search.no_results' => 'No posts were found.',
@@ -40,12 +41,15 @@ return [
     'sidebar.archives' => 'Archives',
     'sidebar.categories' => 'Categories',
     'sidebar.category_title' => 'View all posts in {name}',
+    'sidebar.settings' => 'Settings',
+    'sidebar.language' => 'Language',
     'sidebar.theme_current' => 'Theme: ',
     'sidebar.theme_toggle' => 'Toggle theme',
     'sidebar.meta' => 'Meta',
     'sidebar.dashboard' => 'Dashboard',
     'sidebar.logout' => 'Log out',
     'sidebar.login' => 'Log in',
+    'sidebar.login_register' => 'Log in / Register',
     'sidebar.register' => 'Register',
 
     'theme.light' => 'Light',

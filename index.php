@@ -22,9 +22,6 @@
     <div id="content" role="main">
         <hgroup class="px-2">
         <h1 class="display-5">
-                <?php if ($this->options->logoUrl): ?>
-                <img height="60" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
-                <?php endif; ?>
                 <?php if ($this->is('category')): ?>
                     <?php bp_e('index.category', (string)$this->getArchiveTitle()); ?>
                 <?php elseif ($this->is('tag')): ?>
