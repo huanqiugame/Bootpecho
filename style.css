@@ -326,14 +326,33 @@ img, video {
     font-weight: bold;
 }
 
-.post-properties-container {
+.post-meta {
     display: flex;
     flex-wrap: wrap;
-    color: rgba(var(--bs-body-color-rgb), 80%);
+    align-items: center;
+    gap: 0.4rem 1.25rem;
+    color: rgba(var(--bs-body-color-rgb), 65%);
+    font-size: 0.875rem;
+    line-height: 1.4;
 }
-.post-properties-container > * {
+.post-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+.post-meta-item svg {
     flex-shrink: 0;
-    margin: 0.2rem 0;
+    opacity: 0.85;
+}
+a.post-meta-item {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+a.post-meta-item:hover {
+    color: rgb(var(--bs-body-color-rgb));
+    text-decoration: none;
 }
 
 .content-container {

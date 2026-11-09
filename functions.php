@@ -80,6 +80,13 @@ function bp_e($key, ...$args) {
     echo bp_t($key, ...$args);
 }
 
+/**
+ * 是否显示并统计文章阅读量；未保存过设置时默认开启。
+ */
+function bootpecho_show_post_views() {
+    return (string) Helper::options()->showPostViews !== '0';
+}
+
 function themeConfig($form) {
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array('ShowRecentPosts' => _t('显示最新文章'),
@@ -90,6 +97,12 @@ function themeConfig($form) {
     array('ShowRecentComments', 'ShowCategory', 'ShowArchive', 'ShowOther'), _t('侧边栏显示'));
     
     $form->addInput($sidebarBlock->multiMode());
+
+    $showPostViews = new Typecho_Widget_Helper_Form_Element_Radio('showPostViews',
+    array(1 => _t('显示并统计'),
+    0 => _t('隐藏且不统计')),
+    1, _t('阅读量'), _t('关闭后不会输出阅读量相关代码，也不会更新文章的阅读次数。'));
+    $form->addInput($showPostViews);
 }
 
 function themeFields($layout) {

@@ -71,6 +71,7 @@
                             </svg>
                             <?php $this->category('<span class="mx-1">·</span>') ?>
                         </div>
+                        <?php if (bootpecho_show_post_views()): ?>
                         <div style="display: inline-flex; float: right; margin-left: auto; align-items: center;">
                             <?php Postviews($this); ?>
                             <span class="ms-1" style="color: #6c757dc0;">
@@ -79,6 +80,7 @@
                                 </svg>
                             </span>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="card-body pt-2">
                         <div class="article-tile-content">

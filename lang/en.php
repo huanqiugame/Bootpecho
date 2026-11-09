@@ -25,6 +25,7 @@ return [
     'index.next_page' => 'Next',
 
     'post.author_posts' => 'View all posts by %s',
+    'post.views' => 'Views',
     'post.tags' => 'Tags',
     'post.tags_separator' => ', ',
     'post.tags_empty' => 'None',

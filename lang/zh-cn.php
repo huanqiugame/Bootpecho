@@ -25,6 +25,7 @@ return [
     'index.next_page' => '后一页',
 
     'post.author_posts' => '查看所有由 %s 发布的文章',
+    'post.views' => '阅读量',
     'post.tags' => '文章标签',
     'post.tags_separator' => '、',
     'post.tags_empty' => '无',
