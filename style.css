@@ -366,6 +366,13 @@ a.post-meta-item:hover {
     /* 允许 Grid 子项在必要时收缩 */
     margin-inline: auto;
 }
+/* 文章主体容器宽度预设，“宽”沿用上面的 1000px 响应式宽度 */
+.content-container.bp-width-narrow {
+    max-width: 700px;
+}
+.content-container.bp-width-medium {
+    max-width: 900px;
+}
 .entry-header {
     grid-area: header;
 }
@@ -502,6 +509,13 @@ a.post-meta-item:hover {
     body {
         max-width: calc(100vw - (100vw - 500px) * 0.087);
     }
+}
+/* 文章全页面容器宽度预设，“宽”沿用 Bootstrap 容器的响应式宽度 */
+body.bp-width-narrow {
+    max-width: 700px;
+}
+body.bp-width-medium {
+    max-width: 900px;
 }
 
 .article-tile-container {

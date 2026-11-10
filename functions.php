@@ -87,6 +87,19 @@ function bootpecho_show_post_views() {
     return (string) Helper::options()->showPostViews !== '0';
 }
 
+/**
+ * 将容器宽度预设转换为样式类；宽（当前）不添加任何类。
+ */
+function bootpecho_container_width_class($width) {
+    $width = (string) $width;
+
+    if ($width === 'narrow' || $width === 'medium') {
+        return ' bp-width-' . $width;
+    }
+
+    return '';
+}
+
 function themeConfig($form) {
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array('ShowRecentPosts' => _t('显示最新文章'),
@@ -117,9 +130,25 @@ function themeFields($layout) {
 	0, _t('目录是否固定'), _t('默认浮动。对于简洁的文章，请选择固定在文章开头。'));
     $layout->addItem($tocNoFloat);
 
+    // $articleContainerWidth 用于 Post 和 Page 中
+    $articleContainerWidth = new Typecho_Widget_Helper_Form_Element_Radio('articleContainerWidth',
+    array('narrow' => _t('窄'),
+    'medium' => _t('中'),
+    'wide' => _t('宽')),
+    'wide', _t('文章主体容器宽度'), _t('控制正文部分的容器宽度。'));
+    $layout->addItem($articleContainerWidth);
+
     // $articleContainerStyle 用于 Post 和 Page 中
     $articleContainerStyle = new Typecho_Widget_Helper_Form_Element_Text('articleContainerStyle', NULL, NULL, _t('文章主体容器额外样式'), _t('不包括文章标题、信息、目录和页脚，纯粹正文部分的容器样式。直接填入style=""的CSS样式。'));
     $layout->addItem($articleContainerStyle);
+
+    // $bodyContainerWidth 用于 Post 和 Page 中
+    $bodyContainerWidth = new Typecho_Widget_Helper_Form_Element_Radio('bodyContainerWidth',
+    array('narrow' => _t('窄'),
+    'medium' => _t('中'),
+    'wide' => _t('宽')),
+    'wide', _t('文章全页面容器宽度'), _t('控制整个页面容器的宽度。'));
+    $layout->addItem($bodyContainerWidth);
 
     // $articleContainerStyle 用于 Post 和 Page 中
     $bodyContainerStyle = new Typecho_Widget_Helper_Form_Element_Text('bodyContainerStyle', NULL, NULL, _t('文章全页面容器额外样式'), _t('包括从顶部导航栏到底部页脚的容器样式。直接填入style=""的CSS样式。'));

@@ -84,7 +84,7 @@
                     echo $articleContainerStyle;
                 }
                 ?>
-            " class="content-container">
+            " class="content-container<?php echo bootpecho_container_width_class($this->fields->articleContainerWidth); ?>">
             <div class="entry-content">
                 <?php $this->content() ?>
             </div>

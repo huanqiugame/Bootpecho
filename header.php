@@ -26,7 +26,7 @@
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>
 </head>
-<body class="container-xl mt-3 mb-5" style="
+<body class="container-xl mt-3 mb-5<?php echo bootpecho_container_width_class($this->fields->bodyContainerWidth); ?>" style="
     <?php 
         $bodyContainerStyle = $this->fields->bodyContainerStyle;
         if (isset($bodyContainerStyle)) {
