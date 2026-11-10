@@ -16,10 +16,10 @@
 
 
 <?php if ($this->is('post') || $this->is('page')): ?>
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/page.js'); ?>"></script>
+    <script type="text/javascript" src="<?php bootpecho_asset('js/page.js'); ?>"></script>
 <?php endif; ?>
 <?php if (!$this->is('post') && !$this->is('page')): ?> <!-- 如果是front的话 -->
-    <script type="text/javascript" src="<?php $this->options->themeUrl('js/front.js'); ?>"></script>
+    <script type="text/javascript" src="<?php bootpecho_asset('js/front.js'); ?>"></script>
 <?php endif; ?>
 <script type="text/javascript">
 window.BootpechoI18n = <?php echo json_encode([
@@ -27,7 +27,7 @@ window.BootpechoI18n = <?php echo json_encode([
     'tocMissing' => bp_t('js.toc_missing'),
 ], JSON_UNESCAPED_UNICODE); ?>;
 </script>
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme_p2.js'); ?>"></script>
+<script type="text/javascript" src="<?php bootpecho_asset('js/set_color_theme_p2.js'); ?>"></script>
 <?php $this->footer(); ?>
 
 <!-- 开始使用cdnjs提供Bootstrap JavaScript文件 -->

@@ -100,6 +100,127 @@ function bootpecho_container_width_class($width) {
     return '';
 }
 
+/**
+ * 输出内容寻址的主题资源 URL。
+ *
+ * 把 style.css 固化成 static/style.<内容哈希8>.css：同一份内容永远同一个 URL，
+ * 内容一变就生成新文件，旧文件保留，因此任何新旧 HTML 组合都能拿到匹配的资源。
+ * 派生文件写不进去时退回原始路径，保证页面不会因为一次 copy 失败而白屏。
+ *
+ * @param string $path 相对主题根目录的路径，如 style.css、js/page.js
+ */
+function bootpecho_asset(string $path): void
+{
+    static $urls = array();
+
+    if (!isset($urls[$path])) {
+        $source = __DIR__ . '/' . ltrim($path, '/');
+        $hash = is_file($source) ? md5_file($source) : false;
+
+        if (!$hash) {
+            $urls[$path] = null;
+        } else {
+            $info = pathinfo($path);
+            $dir = ($info['dirname'] === '.' || $info['dirname'] === '') ? '' : $info['dirname'];
+            $rel = ($dir === '' ? '' : $dir . '/')
+                . $info['filename'] . '.' . substr($hash, 0, 8) . '.' . $info['extension'];
+            $target = __DIR__ . '/static/' . $rel;
+
+            if (!is_file($target)) {
+                $targetDir = dirname($target);
+                if (!is_dir($targetDir)) {
+                    @mkdir($targetDir, 0755, true);
+                }
+                // 先写临时文件再 rename：并发首请求不会读到写了一半的 CSS
+                $tmp = $target . '.' . getmypid() . '.tmp';
+                if (@copy($source, $tmp)) {
+                    @rename($tmp, $target);
+                } else {
+                    @unlink($tmp);
+                }
+
+                // 只有"生成了新版本"才可能变多，清理就在这一刻顺手做
+                bootpecho_asset_gc(__DIR__ . '/static');
+            }
+
+            $urls[$path] = is_file($target) ? 'static/' . $rel : null;
+        }
+    }
+
+    // themeUrl() 是 echo 语义（var/Widget/Options.php:223-226），保持一致
+    \Widget\Options::alloc()->themeUrl($urls[$path] === null ? $path : $urls[$path]);
+}
+
+/**
+ * 清理 static/ 下过期的历史版本。
+ *
+ * 由 bootpecho_asset() 在生成新版本后调用，靠 .lastgc 节流。
+ * 保留天数必须大于 HTML 在边缘和浏览器的最长缓存时间，否则旧页面会掉样式。
+ *
+ * @param string $staticDir 派生文件根目录
+ */
+function bootpecho_asset_gc(string $staticDir): void
+{
+    $options = \Widget\Options::alloc();
+
+    // 从未保存过主题设置时（值为 null）按启用处理，避免部署后必须先手动保存一次
+    $enabled = $options->assetGc;
+    $enabled = ($enabled === null) ? 1 : (int) $enabled;
+    if (!$enabled) {
+        return;
+    }
+
+    // Typecho 的校验器只有 isInteger，没有下限，这里兜底
+    $days = (int) $options->assetGcDays;
+    if ($days < 1) {
+        $days = 7;
+    }
+
+    if (!is_dir($staticDir)) {
+        return;
+    }
+
+    $marker = $staticDir . '/.lastgc';
+    $now = time();
+    if (is_file($marker) && $now - filemtime($marker) < 3600) {
+        return;
+    }
+    @touch($marker);
+
+    $cutoff = $now - $days * 86400;
+    $iterator = new \RecursiveIteratorIterator(
+        new \RecursiveDirectoryIterator($staticDir, \FilesystemIterator::SKIP_DOTS),
+        \RecursiveIteratorIterator::LEAVES_ONLY
+    );
+
+    foreach ($iterator as $file) {
+        if (!$file->isFile()) {
+            continue;
+        }
+
+        $path = $file->getPathname();
+        $name = $file->getFilename();
+        $mtime = $file->getMTime();
+
+        if (substr($name, -4) === '.tmp') {
+            if ($now - $mtime > 3600) {
+                @unlink($path);
+            }
+            continue;
+        }
+
+        if (!preg_match('/\.[0-9a-f]{8}\.(css|js)$/', $name)) {
+            continue;
+        }
+
+        if ($mtime >= $cutoff) {
+            continue;
+        }
+
+        @unlink($path);
+    }
+}
+
 function themeConfig($form) {
     $sidebarBlock = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarBlock', 
     array('ShowRecentPosts' => _t('显示最新文章'),
@@ -116,6 +237,17 @@ function themeConfig($form) {
     0 => _t('隐藏且不统计')),
     1, _t('阅读量'), _t('关闭后不会输出阅读量相关代码，也不会更新文章的阅读次数。'));
     $form->addInput($showPostViews);
+
+    $assetGc = new Typecho_Widget_Helper_Form_Element_Radio('assetGc',
+        array(1 => _t('启用'), 0 => _t('关闭')),
+        1, _t('静态资源旧版本清理'),
+        _t('按保留天数删除 static/ 下的历史版本文件。关闭后只增不删。'));
+    $form->addInput($assetGc);
+
+    $assetGcDays = new Typecho_Widget_Helper_Form_Element_Number('assetGcDays',
+        null, '7', _t('旧版本保留天数'),
+        _t('必须大于 HTML 在边缘和浏览器的最长缓存时间，否则旧页面会掉样式。默认 7 天。'));
+    $form->addInput($assetGcDays->addRule('isInteger', _t('请填写整数')));
 }
 
 function themeFields($layout) {

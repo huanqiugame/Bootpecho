@@ -20,8 +20,8 @@
 <!-- LaTeX 渲染结束 -->
 
 
-<link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('style.css'); ?>">
-<script type="text/javascript" src="<?php $this->options->themeUrl('js/set_color_theme.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php bootpecho_asset('style.css'); ?>">
+<script type="text/javascript" src="<?php bootpecho_asset('js/set_color_theme.js'); ?>"></script>
 
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>
