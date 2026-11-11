@@ -563,7 +563,7 @@ body.bp-width-medium {
 }
 .article-tile-summary, .article-tile-summary-text {
     line-height: 1.6;
-    word-break: break-all;
+    word-break: break-word;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
